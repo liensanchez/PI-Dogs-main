@@ -1,22 +1,49 @@
-const { Router } = require("express")
+const { Router, response } = require("express")
 const {allDogsInfo} = require('../controllers/dogs.Controllers')
 
 
 
 const dogsRoutes = Router()
 
-dogsRoutes.get('/', async (req,res) => {  
 
-  try {
+/* dogsRoutes.get('/', async (req,res) => {  
 
-    const dogs = await allDogsInfo()
+  const {dogName} = req.query
 
-    res.status(200).json(dogs)
-  } catch (error) {
+  res.status(200)
+  console.log(dogName)
+}) */
 
-    res.status(404).send({error:error.message})
+
+/* dogsRoutes.get('/', async (req,res) => {  
+
+  const {dogName} = req.query
+  
+  if (!dogName) {
+
+    try {
+
+      const dogs = await allDogsInfo()
+  
+      res.status(200).json(dogs)
+    } catch (error) {
+  
+      res.status(404).send({error:error.message})
+    }
+  } else {
+
+    try {
+
+      console.log(dogName)
+  
+      res.status(200).send('hola')
+    } catch (error) {
+  
+      res.status(404).send({error:error.message})
   }
-})
+}
+ */
+
 
 
 
