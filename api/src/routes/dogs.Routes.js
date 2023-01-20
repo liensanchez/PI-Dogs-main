@@ -1,5 +1,5 @@
 const { Router} = require("express")
-const {allDogsInfo, searchDog} = require('../controllers/dogs.Controllers')
+const {allDogsInfo, searchDog, searchID} = require('../controllers/dogs.Controllers')
 
 
 
@@ -29,16 +29,26 @@ dogsRoutes.get('/', async (req,res) => {
 })
  
 
+dogsRoutes.get('/:id', async (req,res) => { 
 
+  const dogId = req.params
+
+  let foundDog;
+
+  try {
+
+    foundDog = await searchID(dogId.id)
+
+    res.status(200).json(foundDog)
+  } catch (error) {
+
+    res.status(404).send({error:error.message})
+  } 
+ 
+})
 
 
 /* 
-[ ] GET /dogs:
-Obtener un listado de las razas de perro
-Debe devolver solo los datos necesarios para la ruta principals
-/* [ ] GET /dogs?name="...":
-Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
-Si no existe ninguna raza de perro mostrar un mensaje adecuado
 [ ] GET /dogs/{idRaza}:
 Obtener el detalle de una raza de perro en particular
 Debe traer solo los datos pedidos en la ruta de detalle de raza de perro

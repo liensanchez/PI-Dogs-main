@@ -175,7 +175,7 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [X] __GET /dogs?name="..."__:
   - Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
   - Si no existe ninguna raza de perro mostrar un mensaje adecuado
-- [ ] __GET /dogs/{idRaza}__:
+- [|] __GET /dogs/{idRaza}__:
   - Obtener el detalle de una raza de perro en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
   - Incluir los temperamentos asociados

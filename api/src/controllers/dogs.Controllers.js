@@ -8,6 +8,7 @@ const allDogsInfo = async () => {
   return allDogsInfo
 }
 
+
 const searchDog = async (dogName) => {
 
   let dog = dogName 
@@ -18,8 +19,22 @@ const searchDog = async (dogName) => {
   return theDogInfo
 }
 
+const searchID = async (dogId) => {
+  let dog = dogId 
+
+  console.log('buscamos ' + dog);
+
+  const dogAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/${dog}`);
+  //lo transformamos para mostrar correctamente la info
+  let theDogInfo = await (dogAPI.data)
+
+  return theDogInfo
+  
+}
+
 
 module.exports = {
   allDogsInfo,
-  searchDog
+  searchDog,
+  searchID
 }
