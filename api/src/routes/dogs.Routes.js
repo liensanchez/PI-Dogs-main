@@ -1,48 +1,33 @@
-const { Router, response } = require("express")
-const {allDogsInfo} = require('../controllers/dogs.Controllers')
+const { Router} = require("express")
+const {allDogsInfo, searchDog} = require('../controllers/dogs.Controllers')
 
 
 
 const dogsRoutes = Router()
 
 
-/* dogsRoutes.get('/', async (req,res) => {  
+dogsRoutes.get('/', async (req,res) => { 
 
-  const {dogName} = req.query
+  const dogName= req.query
 
-  res.status(200)
-  console.log(dogName)
-}) */
-
-
-/* dogsRoutes.get('/', async (req,res) => {  
-
-  const {dogName} = req.query
+  console.log(dogName.name)
   
-  if (!dogName) {
+  let foundDog;
 
-    try {
+  try {
 
-      const dogs = await allDogsInfo()
-  
-      res.status(200).json(dogs)
-    } catch (error) {
-  
-      res.status(404).send({error:error.message})
-    }
-  } else {
+    if (dogName.name) foundDog = await searchDog(dogName.name)
 
-    try {
+    else foundDog = await allDogsInfo()
 
-      console.log(dogName)
-  
-      res.status(200).send('hola')
-    } catch (error) {
-  
-      res.status(404).send({error:error.message})
+    res.status(200).json(foundDog)
+  } catch (error) {
+
+    res.status(404).send({error:error.message})
   }
-}
- */
+
+})
+ 
 
 
 
@@ -50,14 +35,14 @@ const dogsRoutes = Router()
 /* 
 [ ] GET /dogs:
 Obtener un listado de las razas de perro
-Debe devolver solo los datos necesarios para la ruta principal
-[ ] GET /dogs?name="...":
+Debe devolver solo los datos necesarios para la ruta principals
+/* [ ] GET /dogs?name="...":
 Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
 Si no existe ninguna raza de perro mostrar un mensaje adecuado
 [ ] GET /dogs/{idRaza}:
 Obtener el detalle de una raza de perro en particular
 Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
 Incluir los temperamentos asociados
-*/
+ */
 
 module.exports = dogsRoutes
