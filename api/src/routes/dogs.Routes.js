@@ -1,8 +1,6 @@
 const { Router} = require("express")
 const {allDogsInfo, searchDog, searchID} = require('../controllers/dogs.Controllers')
 
-
-
 const dogsRoutes = Router()
 
 
@@ -42,7 +40,6 @@ dogsRoutes.get('/:id', async (req,res) => {
 
     res.status(404).send({error:error.message})
   } 
- 
 })
 
 
