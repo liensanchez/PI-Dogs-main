@@ -169,10 +169,10 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] __GET /dogs__:
+- [X] __GET /dogs__:
   - Obtener un listado de las razas de perro
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /dogs?name="..."__:
+- [X] __GET /dogs?name="..."__:
   - Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
   - Si no existe ninguna raza de perro mostrar un mensaje adecuado
 - [ ] __GET /dogs/{idRaza}__:
