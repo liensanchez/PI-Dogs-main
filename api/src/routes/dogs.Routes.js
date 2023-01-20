@@ -9,8 +9,6 @@ const dogsRoutes = Router()
 dogsRoutes.get('/', async (req,res) => { 
 
   const dogName= req.query
-
-  console.log(dogName.name)
   
   let foundDog;
 
