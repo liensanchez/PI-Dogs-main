@@ -1,10 +1,10 @@
 const { Router} = require("express")
-const {allDogsInfo, searchDog, searchID} = require('../controllers/dogs.Controllers')
+const {allDogsInfo, searchDog, searchID, createDog} = require('../controllers/dogs.Controllers')
 
 const dogsRoutes = Router()
 
 
-dogsRoutes.get('/name?=pepe', async (req,res) => { 
+dogsRoutes.get('/', async (req,res) => { 
 
   const dogName = req.query
   
@@ -43,11 +43,39 @@ dogsRoutes.get('/:id', async (req,res) => {
 })
 
 
-/* 
-[ ] GET /dogs/{idRaza}:
-Obtener el detalle de una raza de perro en particular
-Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
-Incluir los temperamentos asociados
- */
+dogsRoutes.get('/', async (req,res) => { 
+
+  
+  let foundDog;
+
+  try {
+    foundDog = await allDogsInfo()
+
+    res.status(200).json(foundDog)
+  } catch (error) {
+
+    res.status(404).send({error:error.message})
+  }
+
+})
+
+
+dogsRoutes.post('/', async (req, res) =>{
+  try {
+    
+    const {name, height, weight, lifeSpan} = req.body
+
+    const newDog = await createDog(name, height, weight, lifeSpan)
+
+    res.status(200).json(newDog)
+
+  } catch (error) {
+    
+    res.status(404).send({error:error.message})
+  }
+
+})
+
+
 
 module.exports = dogsRoutes

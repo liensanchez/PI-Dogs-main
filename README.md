@@ -179,10 +179,10 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
   - Obtener el detalle de una raza de perro en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
   - Incluir los temperamentos asociados
-- [ ] __POST /dogs__:
+- [X] __POST /dogs__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro por body
   - Crea una raza de perro en la base de datos relacionada con sus temperamentos
-- [ ] __GET /temperaments__:
+- [X] __GET /temperaments__:
   - Obtener todos los temperamentos posibles
   - En una primera instancia deberán obtenerlos desde la API externa y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 

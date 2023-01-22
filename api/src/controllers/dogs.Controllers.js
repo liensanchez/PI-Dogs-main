@@ -1,11 +1,16 @@
-const axios = require('axios')
+const axios = require('axios');
+const {Dog} = require('../db');
 
 
 const allDogsInfo = async () => {
 
-  const dogsAPI = await axios.get('https://api.thedogapi.com/v1/breeds');
+  const infoAPI = await axios.get('https://api.thedogapi.com/v1/breeds');
 
-  let allDogsInfo = await (dogsAPI.data)
+  const dogApi = infoAPI.data
+
+  const dogDB = await Dog.findAll()
+
+  let allDogsInfo = [...dogApi, ...dogDB]
   
   return allDogsInfo
 }
@@ -32,11 +37,22 @@ const searchID = async (dogId) => {
   let theDogInfo = await (dogAPI.data)
 
   return theDogInfo
+
+
+}
+
+
+const createDog = async ( name, height, weight, lifeSpan) => {
+
+  const newDog = await Dog.create({ name, height, weight, lifeSpan})
+
+  return newDog
 }
 
 
 module.exports = {
   allDogsInfo,
   searchDog,
-  searchID
+  searchID,
+  createDog
 }

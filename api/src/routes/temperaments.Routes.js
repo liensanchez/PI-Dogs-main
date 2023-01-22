@@ -9,6 +9,7 @@ temperamentsRoutes.get('/', async (req, res) => {
   try{
 
     let temperamentFound = await getAllTemperaments()
+    
     res.status(200).send(temperamentFound)
 
   }catch (error) {
