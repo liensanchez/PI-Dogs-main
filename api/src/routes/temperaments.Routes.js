@@ -6,11 +6,14 @@ const temperamentsRoutes = Router()
 
 temperamentsRoutes.get('/', async (req, res) => {
 
-  let temperamentFound = await getAllTemperaments()
+  try{
 
-  
+    let temperamentFound = await getAllTemperaments()
+    res.status(200).send(temperamentFound)
 
-  res.status(200).send('Holis')
+  }catch (error) {
+
+  } 
 })
 
 module.exports = temperamentsRoutes
