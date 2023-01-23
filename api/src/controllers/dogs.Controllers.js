@@ -21,16 +21,26 @@ const searchName = async (dogName) => {
 
   const allDogs = await allDogsInfo()
 
-  const dog = allDogs.find(dog => dog.name == dogName)
+  const dog = allDogs.filter(dog => dog.name.includes(dogName))
 
-  return dog
+  return dog 
+ 
 
-/* 
-  const infoAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dogName}`);
+/*    const infoAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dogName}`);
 
-  let dogFound;
+  const namesDB = await Dog.findAll({
+    where: {
+      name: {[Op.iLike]: `${dogName}`}
+    }
+  })
 
-  if (infoAPI.data.length == 1) {
+  const namesAPI = await infoAPI.data
+
+  let allDogsInfo = [...namesAPI, ...namesDB]
+
+  return allDogsInfo  */
+
+/*   if (infoAPI.data.length == 1) {
 
     dogFound = await(infoAPI.data)
   } else {
@@ -42,23 +52,22 @@ const searchName = async (dogName) => {
         name: { [Op.like]: `${dogName}`}
       }
     })
-  }  */
+  }   */
 
 } 
 
 
 const searchID = async (dogId) => {
 
-
   const allDogs = await allDogsInfo()
 
-/*   allDogs.sort()
-  allDogs[dogId.id] */
-  const dog = allDogs.find(dog => dog.id == dogId)
+  const dog = allDogs.filter((dog) => dog.id == dogId)
   
- /*  allDogs.find(dog => dog.id == dogId) */
-
   return dog
+
+/*   allDogs.sort()
+  allDogs[dogId.id]   
+  allDogs.find(dog => dog.id == dogId) */
 /* 
   let dog = dogId 
 
@@ -72,7 +81,10 @@ const searchID = async (dogId) => {
 
 const createDog = async ( name, height, weight, lifeSpan) => {
 
-  const newDog = await Dog.create({ name, height, weight, lifeSpan})
+  //  const dogDB = await Dog.findAll()
+
+
+  const newDog = await Dog.create({"id":265,name, height, weight, lifeSpan})
 
   return newDog
 }
