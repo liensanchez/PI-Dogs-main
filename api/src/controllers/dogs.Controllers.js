@@ -2,7 +2,6 @@ const axios = require('axios');
 const {Dog, Temperaments} = require('../db');
 
 
-
 const allDogsInfo = async () => {
 
   const infoAPI = await axios.get('https://api.thedogapi.com/v1/breeds');
@@ -16,14 +15,15 @@ const allDogsInfo = async () => {
       through: {
         attributes: []
       } 
-    } 
+    }
   })
 
   let allDogsInfo = [...dogApi, ...dogDB]
+
+  console.log(...dogDB)
   
   return allDogsInfo
 }
-
 
 
 const searchName = async (dogName) => {
@@ -45,17 +45,6 @@ const searchID = async (dogId) => {
   
   return dog
 
-/*   allDogs.sort()
-  allDogs[dogId.id]   
-  allDogs.find(dog => dog.id == dogId) */
-/* 
-  let dog = dogId 
-
-  const dogAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/${dog}`);
-
-  let theDogInfo = await (dogAPI.data)
-
-  return theDogInfo */
 }
 
 
@@ -69,6 +58,8 @@ const createDog = async ( name, height, weight, lifeSpan, temperament) => {
     
     default: {name: temperament}
   })
+
+  await newDog.addTemperament(temperamentDB[0])
 
   return newDog
 }

@@ -9,9 +9,7 @@ const {
   DB_HOST,
 } = process.env 
 
-/* const DB_USER = 'lienadmin'
-const DB_PASSWORD = 'admin2023'
-const DB_HOST = 'localhost:5432' */
+ 
 
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
@@ -38,8 +36,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades 
 // Para relacionarlos hacemos un destructuring
-const { Dog } = sequelize.models;
-const { Temperaments } = sequelize.models;
+const { Dog, Temperaments } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
