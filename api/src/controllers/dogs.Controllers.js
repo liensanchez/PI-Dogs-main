@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { Op } = require("sequelize");
 const {Dog} = require('../db');
 
 
@@ -16,29 +17,51 @@ const allDogsInfo = async () => {
 }
 
 
-const searchDog = async (dogName) => {
+const searchName = async (dogName) => {
 
-  let dog = dogName 
+  const allDogs = await allDogsInfo()
 
-  const dogAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dog}`);
+  const dog = allDogs.find(dog => dog.name == dogName)
 
-  let theDogInfo = await (dogAPI.data)
+  return dog
 
-  return theDogInfo
-}
+/* 
+  const infoAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dogName}`);
+
+  let dogFound;
+
+  if (infoAPI.data.length == 1) {
+
+    dogFound = await(infoAPI.data)
+  } else {
+
+    dogFound = await Dog.findAll({
+
+      where: {
+
+        name: { [Op.like]: `${dogName}`}
+      }
+    })
+  }  */
+
+} 
 
 
 const searchID = async (dogId) => {
 
+  const allDogs = await allDogsInfo()
+
+  const dog = allDogs.find(dog => dog.id == dogId)
+
+  return dog
+/* 
   let dog = dogId 
 
   const dogAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/${dog}`);
 
   let theDogInfo = await (dogAPI.data)
 
-  return theDogInfo
-
-
+  return theDogInfo */
 }
 
 
@@ -52,7 +75,7 @@ const createDog = async ( name, height, weight, lifeSpan) => {
 
 module.exports = {
   allDogsInfo,
-  searchDog,
   searchID,
+  searchName,
   createDog
 }
