@@ -49,9 +49,14 @@ const searchName = async (dogName) => {
 
 const searchID = async (dogId) => {
 
+
   const allDogs = await allDogsInfo()
 
+/*   allDogs.sort()
+  allDogs[dogId.id] */
   const dog = allDogs.find(dog => dog.id == dogId)
+  
+ /*  allDogs.find(dog => dog.id == dogId) */
 
   return dog
 /* 
