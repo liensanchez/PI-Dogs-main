@@ -1,6 +1,6 @@
 const axios = require('axios');
-const { Op } = require("sequelize");
-const {Dog} = require('../db');
+const {Dog, Temperaments} = require('../db');
+
 
 
 const allDogsInfo = async () => {
@@ -9,12 +9,21 @@ const allDogsInfo = async () => {
 
   const dogApi = infoAPI.data
 
-  const dogDB = await Dog.findAll()
+  const dogDB = await Dog.findAll({
+     include: {
+      model: Temperaments,
+      attributes : ["name"],
+      through: {
+        attributes: []
+      } 
+    } 
+  })
 
   let allDogsInfo = [...dogApi, ...dogDB]
   
   return allDogsInfo
 }
+
 
 
 const searchName = async (dogName) => {
@@ -25,35 +34,6 @@ const searchName = async (dogName) => {
 
   return dog 
  
-
-/*    const infoAPI = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dogName}`);
-
-  const namesDB = await Dog.findAll({
-    where: {
-      name: {[Op.iLike]: `${dogName}`}
-    }
-  })
-
-  const namesAPI = await infoAPI.data
-
-  let allDogsInfo = [...namesAPI, ...namesDB]
-
-  return allDogsInfo  */
-
-/*   if (infoAPI.data.length == 1) {
-
-    dogFound = await(infoAPI.data)
-  } else {
-
-    dogFound = await Dog.findAll({
-
-      where: {
-
-        name: { [Op.like]: `${dogName}`}
-      }
-    })
-  }   */
-
 } 
 
 
@@ -79,12 +59,16 @@ const searchID = async (dogId) => {
 }
 
 
-const createDog = async ( name, height, weight, lifeSpan) => {
+const createDog = async ( name, height, weight, lifeSpan, temperament) => {
+  
+  const newDog = await Dog.create({name, height, weight, lifeSpan})
 
-  //  const dogDB = await Dog.findAll()
+  const temperamentDB = await Temperaments.findOrCreate({
 
-
-  const newDog = await Dog.create({"id":265,name, height, weight, lifeSpan})
+    where: {name:temperament}, 
+    
+    default: {name: temperament}
+  })
 
   return newDog
 }

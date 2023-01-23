@@ -49,9 +49,9 @@ dogsRoutes.get('/:id', async (req,res) => {
 dogsRoutes.post('/', async (req, res) =>{
   try {
     
-    const { name, height, weight, lifeSpan} = req.body
+    const { name, height, weight, lifeSpan, temperament} = req.body
 
-    const newDog = await createDog( name, height, weight, lifeSpan)
+    const newDog = await createDog(name, height, weight, lifeSpan, temperament)
 
     res.status(200).json(newDog)
 
