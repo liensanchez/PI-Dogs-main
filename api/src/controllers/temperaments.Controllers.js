@@ -5,11 +5,13 @@ const {Temperaments} = require('../db')
 
 const getAllTemperaments = async () => {
 
-  const dogs = await axios.get('https://api.thedogapi.com/v1/breeds');
+  const dogs = await axios.get('https://api.thedogapi.com/v1/breeds') .then(data => data.data);
 
-  const temperamentsFromAPI = (dogs.data.map((dog) => dog.temperament))
+  const temperamentFromApi = dogs.map((dog) => dog.temperament)
 
-  temperamentsFromAPI.forEach((comportamiento) => {
+  console.log(temperamentFromApi)   
+
+  temperamentFromApi.forEach((comportamiento) => {
 
     if ( comportamiento != undefined && comportamiento.length > 0) {
 
@@ -29,9 +31,9 @@ const getAllTemperaments = async () => {
 
   const temperamentDb = await Temperaments.findAll()
 
-  const temperamentos = [...temperamentsFromAPI, ...temperamentDb]
+  const temperamentos = [...temperamentFromApi, ...temperamentDb]
 
-  return temperamentos  
+  return temperamentos   
 }
 
 /*  */
