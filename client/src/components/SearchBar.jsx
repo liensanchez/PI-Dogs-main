@@ -8,12 +8,14 @@ function SearchBar() {
   const handleChange = e => {
    
     setRaza(e.target.value)
+
   }
 
   
-  const search = (raza) => {
-   
-    console.log(raza)
+  const search = () => {
+
+    fetch(`http://localhost:3003/dogs?name=${raza}`)
+      .then((response) => console.log(response.json()))
   }
 
   return (
@@ -23,5 +25,8 @@ function SearchBar() {
     </>
   )
 }
+
+/*   ESTAS MUTEADO!!!!! */
+
 
 export default SearchBar
