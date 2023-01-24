@@ -15,12 +15,15 @@ dogsRoutes.get('/', async (req, res) => {
 
       foundDog = await allDogsInfo()
 
+      res.status(200).send(foundDog)
     }else {
 
       foundDog = await searchName(dogName.name)
+
+      if(foundDog.length > 0) res.status(200).send(foundDog)
+      else throw Error ('No existe ese perro')
     }
 
-    res.status(200).send(foundDog)
   } catch (error) {
 
     res.status(404).send({error:error.message})
@@ -38,7 +41,9 @@ dogsRoutes.get('/:id', async (req,res) => {
 
     foundDog = await searchID(dogId.id)
 
-    res.status(200).json(foundDog)
+    if(foundDog.length > 0) res.status(200).send(foundDog)
+    
+    else throw Error ('No existe ese perro')
   } catch (error) {
 
     res.status(404).send({error:error.message})
@@ -50,6 +55,8 @@ dogsRoutes.post('/', async (req, res) =>{
   try {
     
     const { name, height, weight, lifeSpan, temperament} = req.body
+
+    if(![name, height, weight])return Error ('Faltan datos obligatorios')
 
     const newDog = await createDog(name, height, weight, lifeSpan, temperament)
 

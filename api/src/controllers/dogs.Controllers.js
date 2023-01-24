@@ -9,18 +9,21 @@ const allDogsInfo = async () => {
   const dogApi = infoAPI.data
 
   const dogDB = await Dog.findAll({
+
      include: {
+
       model: Temperaments,
+
       attributes : ["name"],
+
       through: {
+
         attributes: []
       } 
     }
   })
 
   let allDogsInfo = [...dogApi, ...dogDB]
-
-  console.log(...dogDB)
   
   return allDogsInfo
 }
@@ -33,7 +36,6 @@ const searchName = async (dogName) => {
   const dog = allDogs.filter(dog => dog.name.includes(dogName))
 
   return dog 
- 
 } 
 
 
@@ -44,7 +46,6 @@ const searchID = async (dogId) => {
   const dog = allDogs.filter((dog) => dog.id == dogId)
   
   return dog
-
 }
 
 
