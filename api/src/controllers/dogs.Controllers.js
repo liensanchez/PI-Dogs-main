@@ -31,9 +31,13 @@ const allDogsInfo = async () => {
 
 const searchName = async (dogName) => {
 
-  const allDogs = await allDogsInfo()
+  const getAllDogs = await allDogsInfo()
 
-  const dog = allDogs.filter(dog => dog.name.includes(dogName))
+  const allDogs = getAllDogs.map(
+                                  dog => dog.name.toLowerCase()                              
+                            )
+
+  const dog = allDogs.filter(dog => dog.includes(dogName))
 
   return dog 
 } 
