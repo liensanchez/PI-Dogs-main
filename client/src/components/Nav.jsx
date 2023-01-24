@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchBar from './SearchBar'
 
 function Nav() {
   return (
-    <div>HOLA SOY UN DIV MIRA</div>
+    <>
+    <SearchBar/>
+    </>
   )
 }
 

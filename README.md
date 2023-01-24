@@ -96,8 +96,8 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 
 - [ ] React
 - [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+- [X] Express
+- [X] Sequelize - Postgres
 
 ## Frontend
 
@@ -110,7 +110,7 @@ __Pagina inicial__: deben armar una landing page con
 
 __Ruta principal__: debe contener
 
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
+- [X] Input de búsqueda para encontrar razas de perros por nombre
 - [ ] Área donde se verá el listado de razas de perros. Deberá mostrar su:
   - Imagen
   - Nombre
