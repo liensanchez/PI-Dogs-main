@@ -36,8 +36,6 @@ const getAllTemperaments = async () => {
   return temperamentos   
 }
 
-/*  */
-
 
 module.exports = {
   getAllTemperaments,
