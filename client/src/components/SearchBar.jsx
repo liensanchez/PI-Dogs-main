@@ -16,8 +16,8 @@ function SearchBar() {
   const search = () => {
 
     axios.get(`http://localhost:3003/dogs?name=${raza}`)
-    fetch()
-      .then((response) => console.log(response.json()))
+      .then(data => data.data)
+
   }
 
   return (
