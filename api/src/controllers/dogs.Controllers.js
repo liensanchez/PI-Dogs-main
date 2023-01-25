@@ -16,9 +16,9 @@ const allDogsInfo = async () => {
       lifeSpan: dog.life_span,
       image: dog.image.url,
     }
-})
+  })
 
-  const dogDB = await Dog.findAll({
+  const infoDB = await Dog.findAll({
 
      include: {
 
@@ -33,6 +33,18 @@ const allDogsInfo = async () => {
     }
   })
 
+  const dogDB = infoDB.map((dog) => {
+    return{
+      id: dog.id,
+      name: dog.name,
+      weight: dog.weight,
+      height: dog.height,
+      temperament:  dog.Temperaments.map(temp => temp.name).join(', '),
+      lifeSpan: dog.life_span,
+      image: dog.image,
+    }
+  })
+
   let allDogsInfo = [...dogApi, ...dogDB]
   
   return allDogsInfo
@@ -42,8 +54,6 @@ const allDogsInfo = async () => {
 const searchName = async (dogName) => {
 
   const getAllDogs = await allDogsInfo()
-
-  console.log(getAllDogs)
 
   const allDogs = getAllDogs.map((dog) => {
                                   return{
@@ -77,14 +87,16 @@ const createDog = async ( name, height, weight, lifeSpan, temperament) => {
   
   const newDog = await Dog.create({name, height, weight, lifeSpan})
 
+  const newTemperament = temperament.split(', ')
+
   const temperamentDB = await Temperaments.findOrCreate({
 
-    where: {name:temperament}, 
+    where: {name:newTemperament}, 
     
-    default: {name: temperament}
+    default: {name: newTemperament}
   })
 
-  await newDog.addTemperament(temperamentDB[0])
+  await newDog.addTemperament(temperamentDB)
 
   return newDog
 }
