@@ -1,30 +1,26 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function SearchBar() {
 
-  const [raza, setRaza] = useState('')
+  const navigate = useNavigate()
+
+  const [busquedaRaza, setBusquedaRaza] = useState('')
+
 
   const handleChange = e => {
    
-    setRaza(e.target.value)
-
+    setBusquedaRaza(e.target.value)
   }
   
   const search = async () => {
 
-    const searchResponse = await axios.get(`http://localhost:3003/dogs?name=${raza}`)
-    
-    setRaza(searchResponse.data)
-
+    const searchResponse = await axios.get(`http://localhost:3003/dogs?name=${busquedaRaza}`)
+        
+    navigate(`/dogs?name=${busquedaRaza}`)
   }
-
-/*   <Link to={`/dogs/${dog.id}` } > 
-  <button>Mas info</button>
-  </Link>
- */
 
   return (
     <>

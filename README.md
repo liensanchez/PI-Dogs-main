@@ -111,7 +111,7 @@ __Pagina inicial__: deben armar una landing page con
 __Ruta principal__: debe contener
 
 - [X] Input de búsqueda para encontrar razas de perros por nombre
-- [ ] Área donde se verá el listado de razas de perros. Deberá mostrar su:
+- [X] Área donde se verá el listado de razas de perros. Deberá mostrar su:
   - Imagen
   - Nombre
   - Temperamento
