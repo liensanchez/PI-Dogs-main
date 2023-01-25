@@ -87,16 +87,19 @@ const createDog = async ( name, height, weight, lifeSpan, temperament) => {
   
   const newDog = await Dog.create({name, height, weight, lifeSpan})
 
-  const newTemperament = temperament.split(', ')
+  const arrTemperament = temperament.split(', ')
 
-  const temperamentDB = await Temperaments.findOrCreate({
+  const temp = arrTemperament.forEach(async (temp) => {
 
-    where: {name:newTemperament}, 
-    
-    default: {name: newTemperament}
+    await Temperaments.findOrCreate({
+
+      where: {name:temp}, 
+      
+      default: {name: temp}
+    })
   })
 
-  await newDog.addTemperament(temperamentDB)
+  await newDog.addTemperament(temp)
 
   return newDog
 }
