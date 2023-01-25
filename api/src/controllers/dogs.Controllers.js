@@ -43,15 +43,17 @@ const searchName = async (dogName) => {
 
   const getAllDogs = await allDogsInfo()
 
+  console.log(getAllDogs)
+
   const allDogs = getAllDogs.map((dog) => {
                                   return{
                                     id: dog.id,
                                     name: dog.name.toLowerCase(),
-                                    weight: dog.weight.metric,
-                                    height: dog.height.metric,
+                                    weight: dog.weight,
+                                    height: dog.height,
                                     temperament: dog.temperament,
                                     lifeSpan: dog.life_span,
-                                    image: dog.image.url,
+                                    image: dog.image,
                                   }
   })
   

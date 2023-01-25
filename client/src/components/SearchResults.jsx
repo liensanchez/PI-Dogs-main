@@ -24,8 +24,9 @@ function SearchResults() {
 
     getData()
 
-  }, [])
+  }, [search])
 
+  console.log(dog)
 
   return (
     <>
