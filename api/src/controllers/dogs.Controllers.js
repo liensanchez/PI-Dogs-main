@@ -6,7 +6,17 @@ const allDogsInfo = async () => {
 
   const infoAPI = await axios.get('https://api.thedogapi.com/v1/breeds');
 
-  const dogApi = infoAPI.data
+  const dogApi = infoAPI.data.map((dog) => {
+    return{
+      id: dog.id,
+      name: dog.name,
+      weight: dog.weight.metric,
+      height: dog.height.metric,
+      temperament: dog.temperament,
+      lifeSpan: dog.life_span,
+      image: dog.image.url,
+    }
+})
 
   const dogDB = await Dog.findAll({
 

@@ -11,11 +11,11 @@ function SearchBar() {
     setRaza(e.target.value)
 
   }
-
   
   const search = () => {
 
     axios.get(`http://localhost:3003/dogs?name=${raza}`)
+    
       .then(data => data.data)
 
   }
