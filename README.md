@@ -128,10 +128,10 @@ __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las razas de 
 
 __Ruta de detalle de raza de perro__: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
-- [ ] Altura
-- [ ] Peso
-- [ ] Años de vida
+- [X] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
+- [X] Altura
+- [X] Peso
+- [X] Años de vida
 
 __Ruta de creación de raza de perro__: debe contener
 

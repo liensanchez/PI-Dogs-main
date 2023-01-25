@@ -29,6 +29,9 @@ function SearchResults() {
   return (
     <>
     <h1>Search Results:</h1>
+    <Link to='/home'>
+        <button>Back to Home</button>
+    </Link>
      <div>
       {dog.map((dog) => (
         <div key={dog.id}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Detail() {
 
@@ -32,6 +32,9 @@ function Detail() {
         <p>Between {dog.lifeSpan} of life</p>
       </div>
       ))}
+      <Link to='/home'>
+        <button>Back to Home</button>
+      </Link>
     </>
   )
 }
