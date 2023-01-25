@@ -1,0 +1,32 @@
+import React from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+
+function Detail() {
+
+  let {id} = useParams()
+
+  const [dog, setDog] = useState([])
+
+  useEffect(async () => {
+    const dogsResponse = await axios.get(`http://localhost:3003/dogs/${id}`)
+    
+    setDog(dogsResponse.data)
+  }, [id])
+
+  return (
+    <>
+      {dog.map((dog) => (
+        <div key={dog.id}>
+        <h1 >{dog.name}</h1>
+        <img src={dog.image} alt="" />
+        <p>{dog.temperament}</p>
+        <p>De {dog.weight} kilos</p>
+      </div>
+      ))}
+    </>
+  )
+}
+
+export default Detail

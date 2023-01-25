@@ -12,11 +12,11 @@ function SearchBar() {
 
   }
   
-  const search = () => {
+  const search = async () => {
 
-    axios.get(`http://localhost:3003/dogs?name=${raza}`)
+    const searchResponse = await axios.get(`http://localhost:3003/dogs?name=${raza}`)
     
-      .then(data => data.data)
+    setRaza(searchResponse.data)
 
   }
 

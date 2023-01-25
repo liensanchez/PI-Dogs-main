@@ -13,7 +13,7 @@ temperamentsRoutes.get('/', async (req, res) => {
     res.status(200).send(temperamentFound)
 
   }catch (error) {
-
+    res.status(200).send(Error)
   } 
 })
 
