@@ -28,6 +28,8 @@ function Detail() {
         <img src={dog.image} alt="" />
         <p>{dog.temperament}</p>
         <p>De {dog.weight} kilos</p>
+        <p>De {dog.height} cm de alura</p>
+        <p>Between {dog.lifeSpan} of life</p>
       </div>
       ))}
     </>

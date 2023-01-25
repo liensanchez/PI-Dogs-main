@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
 function SearchBar() {
 
@@ -16,8 +15,6 @@ function SearchBar() {
   }
   
   const search = async () => {
-
-    const searchResponse = await axios.get(`http://localhost:3003/dogs?name=${busquedaRaza}`)
         
     navigate(`/dogs?name=${busquedaRaza}`)
   }
