@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios'
 
 function SearchBar() {
 
@@ -14,7 +15,8 @@ function SearchBar() {
   
   const search = () => {
 
-    fetch(`http://localhost:3003/dogs?name=${raza}`)
+    axios.get(`http://localhost:3003/dogs?name=${raza}`)
+    fetch()
       .then((response) => console.log(response.json()))
   }
 
@@ -25,8 +27,6 @@ function SearchBar() {
     </>
   )
 }
-
-/*   ESTAS MUTEADO!!!!! */
 
 
 export default SearchBar
