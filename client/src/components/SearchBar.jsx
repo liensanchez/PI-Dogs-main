@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function SearchBar() {
@@ -19,6 +20,11 @@ function SearchBar() {
     setRaza(searchResponse.data)
 
   }
+
+/*   <Link to={`/dogs/${dog.id}` } > 
+  <button>Mas info</button>
+  </Link>
+ */
 
   return (
     <>

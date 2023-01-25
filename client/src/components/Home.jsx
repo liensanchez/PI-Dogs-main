@@ -8,10 +8,18 @@ function Home() {
   const [dog, setDog] = useState([])
 
 
-  useEffect(async () => {
-    const dogsResponse = await axios.get('http://localhost:3003/dogs')
+  useEffect(() => {
+
+
+    async function getData() {
+
+      const dogsResponse = await axios.get('http://localhost:3003/dogs')
     
-    setDog(dogsResponse.data)
+      setDog(dogsResponse.data)
+    }    
+
+    getData()
+
   }, [])
 
 

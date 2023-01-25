@@ -9,10 +9,15 @@ function Detail() {
 
   const [dog, setDog] = useState([])
 
-  useEffect(async () => {
-    const dogsResponse = await axios.get(`http://localhost:3003/dogs/${id}`)
-    
-    setDog(dogsResponse.data)
+  useEffect(() => {
+
+    async function getData() {
+      const dogsResponse = await axios.get(`http://localhost:3003/dogs/${id}`)
+
+      setDog(dogsResponse.data)
+    }    
+
+    getData()
   }, [id])
 
   return (
