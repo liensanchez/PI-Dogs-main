@@ -29,7 +29,7 @@ const getAllTemperaments = async () => {
 
   const temperamentDb = await Temperaments.findAll()
 
-  const temperamentos = [...temperamentFromApi, ...temperamentDb]
+  const temperamentos = [...temperamentDb]
 
   return temperamentos   
 }

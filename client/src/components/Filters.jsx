@@ -1,15 +1,33 @@
 import React from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
 
 function Filters() {
+
+  const [temperament, setTemperament] = useState([])
+
+  useEffect(() => {
+
+    async function getData() {
+      const tempsResponse = await axios.get('http://localhost:3003/temperaments')
+
+      setTemperament(tempsResponse.data)
+    }    
+
+    getData()
+  }, [])
+
+
   return (
     <>
       <button>Orden alfabetico</button>
       <button>Peso</button>
       <button>Origen</button>
       <select name="select">
-        <option value="value1">Value 1</option>
-        <option value="value2" selected>Value 2</option>
-        <option value="value3">Value 3</option>
+      {temperament.map((temperament) => (
+                                <option value={temperament.id}>{temperament.name} </option>
+                            ))} 
       </select>
 
     </>
