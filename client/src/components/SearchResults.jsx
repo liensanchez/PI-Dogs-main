@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Cards from './Cards'
 
 function SearchResults() {
 
@@ -26,25 +27,11 @@ function SearchResults() {
 
   }, [search])
 
+
   return (
     <>
     <h1>Search Results:</h1>
-    <Link to='/home'>
-        <button>Back to Home</button>
-    </Link>
-     <div>
-      {dog.map((dog) => (
-        <div key={dog.id}>
-          <h1 >{dog.name}</h1>
-          <img src={dog.image} alt="" />
-          <p>{dog.temperament}</p>
-          <p>De {dog.weight} kilos</p>
-          <Link to={`/dogs/${dog.id}` } > 
-            <button>Mas info</button>
-          </Link>
-        </div>
-      ))}
-    </div> 
+      <Cards dog={dog}/>
     </>
   )
 }

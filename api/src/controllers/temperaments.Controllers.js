@@ -7,9 +7,7 @@ const getAllTemperaments = async () => {
 
   const dogs = await axios.get('https://api.thedogapi.com/v1/breeds') .then(data => data.data);
 
-  const temperamentFromApi = dogs.map((dog) => dog.temperament)
-
-  console.log(temperamentFromApi)   
+  const temperamentFromApi = dogs.map((dog) => dog.temperament) 
 
   temperamentFromApi.forEach((comportamiento) => {
 

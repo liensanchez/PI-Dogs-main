@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Cards from './Cards'
 
 function Home() {
 
@@ -23,19 +23,9 @@ function Home() {
 
 
   return (
-    <div>
-      {dog.map((dog) => (
-        <div key={dog.id}>
-          <h1 >{dog.name}</h1>
-          <img src={dog.image} alt="" />
-          <p>{dog.temperament}</p>
-          <p>De {dog.weight} kilos</p>
-          <Link to={`/dogs/${dog.id}` } > 
-            <button>Mas info</button>
-          </Link>
-        </div>
-      ))}
-    </div>
+    <>
+      <Cards dog={dog}/>
+    </>
   )
 }
 

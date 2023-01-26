@@ -33,6 +33,7 @@ const allDogsInfo = async () => {
     }
   })
 
+
   const dogDB = infoDB.map((dog) => {
     return{
       id: dog.id,
@@ -43,7 +44,7 @@ const allDogsInfo = async () => {
       lifeSpan: dog.life_span,
       image: dog.image,
     }
-  })
+  }) 
 
   let allDogsInfo = [...dogApi, ...dogDB]
   
@@ -89,17 +90,17 @@ const createDog = async ( name, height, weight, lifeSpan, temperament) => {
 
   const arrTemperament = temperament.split(', ')
 
-  const temp = arrTemperament.forEach(async (temp) => {
+  const temp = await Promise.all(arrTemperament.map(async (temp) => {
 
-    await Temperaments.findOrCreate({
+    return await Temperaments.findOrCreate({
 
-      where: {name:temp}, 
-      
-      default: {name: temp}
+        where: {name:temp}, 
+
+        default: {name: temp}
     })
-  })
+  }))
 
-  await newDog.addTemperament(temp)
+  await newDog.addTemperament(temp.map(t => t[0]))
 
   return newDog
 }
