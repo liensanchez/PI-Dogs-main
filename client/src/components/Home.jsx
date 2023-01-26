@@ -1,32 +1,30 @@
 import React from 'react'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {useEffect} from 'react'
 import Cards from './Cards'
+import { allDogs } from '../redux/action/action'
+import Pagination from './Pagination'
+import Filters from './Filters'
 
 function Home() {
 
-  const [dog, setDog] = useState([])
+  const dispatch = useDispatch()
+  const dog = useSelector(state => state.dogs)
+  const currentPage = useSelector(state => state.currentPage)
 
   useEffect(() => {
-
-    async function getData() {
-
-      const dogsResponse = await axios.get('http://localhost:3003/dogs')
-    
-      setDog(dogsResponse.data)
-    }    
-
-    getData()
-
-  }, [])
-
+    dispatch(allDogs())
+  }, [dispatch])
 
   return (
     <>
-      <Cards dog={dog}/>
+      <Filters/>
+      <Cards dog={dog.slice((currentPage-1) *8, currentPage * 8)}/>
+      <Pagination/>
     </>
   )
 }
 
 
 export default Home
+

@@ -7,7 +7,7 @@ function Cards(prop) {
   const showDog = dog.map((dog) => <Card id={dog.id}
                                         key={dog.id}
                                         name={dog.name} 
-                                        img={dog.image} 
+                                        /* img={dog.image}  */
                                         temperament={dog.temperament}
                                         weight={dog.weight}
                                         />

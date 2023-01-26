@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 function Card(dog) {
 
-
   return (
     <>
       <div key={dog.id}>
