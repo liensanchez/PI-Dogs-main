@@ -25,7 +25,8 @@ function Filters() {
       <button>Peso</button>
       <button>Origen</button>
       <select name="select">
-      {temperament.map((temperament) => (
+        <option value={temperament.id}>{temperament.name} </option>
+        {temperament.map((temperament) => (
                                 <option value={temperament.id}>{temperament.name} </option>
                             ))} 
       </select>
