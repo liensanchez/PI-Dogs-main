@@ -7,7 +7,6 @@ function Home() {
 
   const [dog, setDog] = useState([])
 
-
   useEffect(() => {
 
     async function getData() {
