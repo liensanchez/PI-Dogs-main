@@ -27,7 +27,7 @@ function Pagination() {
     <div>
       <button onClick={handlePrev} disabled={currentPage === 1}>←</button>
       <button>{currentPage}</button>
-      <button onClick={handleNext} disabled={currentPage === Math.ceil(dogs.length / 8)}>→</button>
+      <button onClick={handleNext} disabled={currentPage === Math.ceil(dogs.length / 8)} >→</button>
     </div>
   )
 }

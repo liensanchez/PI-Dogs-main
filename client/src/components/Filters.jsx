@@ -7,6 +7,7 @@ import { orderDogs } from '../redux/action/action'
 
 
 function Filters() {
+
   const dispatch = useDispatch()
 
   const [temperament, setTemperament] = useState([])
@@ -24,7 +25,6 @@ function Filters() {
   }, [])
 
   const alphabeticalOrder = () => {
-
     dispatch(orderDogs())
   }
 
