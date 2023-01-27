@@ -9,13 +9,19 @@ import Filters from './Filters'
 function Home() {
 
   const dispatch = useDispatch()
+
   const dog = useSelector(state => state.dogs)
+
   const currentPage = useSelector(state => state.currentPage)
 
+
   useEffect(() => {
+
     dispatch(allDogs())
+    
   }, [dispatch])
 
+  
   return (
     <>
       <Filters/>

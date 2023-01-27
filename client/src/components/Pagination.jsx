@@ -3,9 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changePage } from '../redux/action/action'
 
 function Pagination() {
+
   const dispatch = useDispatch()
+
   const currentPage = useSelector(state => state.currentPage)
+  
   const dogs = useSelector(state => state.dogs)
+
 
   const handlePrev = () => {
     if (currentPage > 1) {
@@ -21,8 +25,9 @@ function Pagination() {
 
   return (
     <div>
-      <button onClick={handlePrev}>Anterior</button>
-      <button onClick={handleNext}>Siguiente</button>
+      <button onClick={handlePrev} disabled={currentPage === 1}>←</button>
+      <button>{currentPage}</button>
+      <button onClick={handleNext} disabled={currentPage === Math.ceil(dogs.length / 8)}>→</button>
     </div>
   )
 }

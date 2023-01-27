@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 function Nav() {
   return (
     <>
-    <SearchBar/>
+      <SearchBar/>
     </>
   )
 }

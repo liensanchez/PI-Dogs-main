@@ -1,4 +1,4 @@
-import { ALLDOGS, CHANGE_PAGE } from '../action/action'
+import { ALLDOGS, CHANGE_PAGE, ORDERDOGS } from '../action/action'
 
 const initialState = {
   dogs: [],
@@ -16,6 +16,11 @@ function reducer (state = initialState, action ){
       return {
                 ...state,
                 currentPage: action.page
+            }
+    case ORDERDOGS:
+      return {
+                ...state,
+                dogs: action.payload
             }
     default:
       return state;

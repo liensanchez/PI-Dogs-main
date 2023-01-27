@@ -2,7 +2,6 @@ const axios = require('axios')
 const {Temperaments} = require('../db')
 
 
-
 const getAllTemperaments = async () => {
 
   const dogs = await axios.get('https://api.thedogapi.com/v1/breeds') .then(data => data.data);
@@ -14,7 +13,7 @@ const getAllTemperaments = async () => {
     if ( comportamiento != undefined && comportamiento.length > 0) {
 
       let arrTemp = comportamiento.split(', ')
-      
+
       arrTemp.forEach(async (temp) => {
 
         await Temperaments.findOrCreate({
