@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useDispatch} from 'react-redux'
-import { orderDogsAlphabetical, orderDogsReversed, orderDogsByOriginDB, orderDogsByOriginAPI, allDogs } from '../redux/action/action'
+import { orderDogsAlphabetical, orderDogsReversed, orderDogsByOriginDB, orderDogsByOriginAPI, allDogs, orderByTemperament } from '../redux/action/action'
 
 
 
@@ -72,10 +72,23 @@ function Filters() {
   }, [])
 
 
-  const temperamentCheck = (name) => {
-    console.log(name)
-  }
+  const [temperamentReset, setTemperamentReset] = useState(false)
 
+  const temperamentOrder = (temperament) => {
+    if (temperamentReset === false) { 
+      
+      dispatch(orderByTemperament(temperament))
+
+      setTemperamentReset(true)
+    } else {
+
+      dispatch(allDogs())
+
+      dispatch(orderByTemperament(temperament))
+
+      setTemperamentReset(false)
+    }  
+  }
 
 
   return (
@@ -98,7 +111,7 @@ function Filters() {
       <select name="select">
         <option>All Temperaments</option>
         {temperament.map((temperament) => (
-                                <option value={temperament.id} key={temperament.id} onClick={() => temperamentCheck(temperament.name)} >{temperament.name}</option>
+                                <option value={temperament.id} key={temperament.id} onClick={() => temperamentOrder(temperament.name)} >{temperament.name}</option>
                             ))} 
       </select>
 

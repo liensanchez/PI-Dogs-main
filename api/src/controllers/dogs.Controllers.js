@@ -14,7 +14,7 @@ const allDogsInfo = async () => {
       height: dog.height.metric,
       temperament: dog.temperament,
       lifeSpan: dog.life_span,
-      image: dog.image.url,
+      image: dog.image.url
     }
   })
 

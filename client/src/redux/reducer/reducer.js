@@ -1,4 +1,4 @@
-import { ALLDOGS, CHANGE_PAGE, ORDERDOGSALPHABETICAL,ORDERDOGSREVERSEALPHABETICAL, COPYOFDOGS, ORDERDOGSBYORIGINDB, ORDERDOGSBYORIGINAPI } from '../action/action'
+import { ALLDOGS, CHANGE_PAGE, ORDERDOGSALPHABETICAL,ORDERDOGSREVERSEALPHABETICAL, COPYOFDOGS, ORDERDOGSBYORIGINDB, ORDERDOGSBYORIGINAPI, ORDERDOGSBYTEMPERAMENT } from '../action/action'
 
 const initialState = {
   dogs: [],
@@ -10,8 +10,8 @@ function reducer (state = initialState, action ){
   switch (action.type) {
     case ALLDOGS:
       return { 
-              ...state,
-              dogs: action.payload
+                ...state,
+                dogs: action.payload
             };
     case CHANGE_PAGE:
       return {
@@ -43,6 +43,11 @@ function reducer (state = initialState, action ){
                 ...state,
                 dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.id.length <= 3)
             }
+    case ORDERDOGSBYTEMPERAMENT:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.temperament && dog.temperament.includes(action.payload))
+            }        
     default:
       return state;
   }

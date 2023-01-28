@@ -5,6 +5,7 @@ export const ORDERDOGSREVERSEALPHABETICAL = 'ORDERDOGSREVERSEALPHABETICAL'
 export const COPYOFDOGS = 'COPYIFDOGS'
 export const ORDERDOGSBYORIGINDB = 'ORDERDOGSBYORIGINDB'
 export const ORDERDOGSBYORIGINAPI = 'ORDERDOGSBYORIGINAPI'
+export const ORDERDOGSBYTEMPERAMENT = 'ORDERDOGSBYTEMPERAMENT'
 
 
 
@@ -81,5 +82,16 @@ export const orderDogsByOriginAPI = () => {
     
     type: ORDERDOGSBYORIGINAPI,
 
+  }
+}
+
+
+export const orderByTemperament = (temperament) => {
+
+  return {
+    
+    type: ORDERDOGSBYTEMPERAMENT,
+
+    payload: temperament
   }
 }
