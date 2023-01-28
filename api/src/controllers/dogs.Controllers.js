@@ -9,7 +9,7 @@ const allDogsInfo = async () => {
   const dogApi = infoAPI.data.map((dog) => {
     return{
       id: dog.id,
-      name: dog.name,
+      name: dog.name.toLowerCase(),
       weight: dog.weight.metric,
       height: dog.height.metric,
       temperament: dog.temperament,
@@ -37,7 +37,7 @@ const allDogsInfo = async () => {
   const dogDB = infoDB.map((dog) => {
     return{
       id: dog.id,
-      name: dog.name,
+      name: dog.name.toLowerCase(),
       weight: dog.weight,
       height: dog.height,
       temperament:  dog.Temperaments.map(temp => temp.name).join(', '),

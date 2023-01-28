@@ -1,6 +1,11 @@
 export const ALLDOGS = 'ALLDOGS'
 export const CHANGE_PAGE = 'CHANGE_PAGE'
-export const ORDERDOGS = 'ORDERDOGS'
+export const ORDERDOGSALPHABETICAL = 'ORDERDOGSALPHABETICAL'
+export const ORDERDOGSREVERSEALPHABETICAL = 'ORDERDOGSREVERSEALPHABETICAL'
+export const COPYOFDOGS = 'COPYIFDOGS'
+export const ORDERDOGSBYORIGINDB = 'ORDERDOGSBYORIGINDB'
+export const ORDERDOGSBYORIGINAPI = 'ORDERDOGSBYORIGINAPI'
+
 
 
 export const changePage = (page) => {
@@ -9,6 +14,7 @@ export const changePage = (page) => {
       page
   }
 }
+
 
 export const allDogs = () => async (dispatch) => {
 
@@ -22,19 +28,58 @@ export const allDogs = () => async (dispatch) => {
 
       payload: dogsInfo
   });
-};
+}
 
-export const orderDogs = () => async (dispatch) => {
 
-    const dogsResponse = await fetch('http://localhost:3003/dogs')
+export const copyOfDogs = (dogs) => {
+
+  return {
+    
+    type: COPYOFDOGS,
+
+    payload: dogs
+  }
+}
   
-    const dogsInfo = await dogsResponse.json()
-  
-    dispatch({
-  
-        type: ORDERDOGS,
-  
-        payload: dogsInfo
-  });
-};
-  
+
+export const orderDogsAlphabetical = (dogs) => {
+
+  return {
+    
+    type: ORDERDOGSALPHABETICAL,
+
+    payload: dogs
+  }
+}
+
+
+export const orderDogsReversed = (dogs) => {
+
+  return {
+    
+    type: ORDERDOGSREVERSEALPHABETICAL,
+
+    payload: dogs
+  }
+}
+
+
+export const orderDogsByOriginDB = () => {
+
+  return {
+    
+    type: ORDERDOGSBYORIGINDB,
+
+
+  }
+}
+
+
+export const orderDogsByOriginAPI = () => {
+
+  return {
+    
+    type: ORDERDOGSBYORIGINAPI,
+
+  }
+}

@@ -1,26 +1,14 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {useEffect} from 'react'
+import {useSelector} from 'react-redux'
 import Cards from './Cards'
-import { allDogs } from '../redux/action/action'
 import Pagination from './Pagination'
 import Filters from './Filters'
 
 function Home() {
 
-  const dispatch = useDispatch()
-
-  const dog = useSelector(state => state.dogs)
+  const dog = useSelector(state => state.dogsWithFilters)
 
   const currentPage = useSelector(state => state.currentPage)
-
-
-  useEffect(() => {
-
-    dispatch(allDogs())
-    
-  }, [dispatch])
-
   
   return (
     <>

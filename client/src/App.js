@@ -5,9 +5,9 @@ import Home from './components/Home';
 import Index from './components/Index';
 import Detail from './components/Detail';
 import SearchResults from './components/SearchResults';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
-import { allDogs } from './redux/action/action';
+import { allDogs, copyOfDogs } from './redux/action/action';
 
 
 
@@ -18,10 +18,15 @@ function App() {
 
   const dispatch = useDispatch()
 
+  const theDogs = useSelector(state => state.dogs) 
+
   useEffect(() => {
     dispatch(allDogs())
   }, [dispatch])
 
+  useEffect(() => { 
+    theDogs.length > 0 && dispatch(copyOfDogs(theDogs))
+  },[theDogs, dispatch]) 
 
   return (
     <>

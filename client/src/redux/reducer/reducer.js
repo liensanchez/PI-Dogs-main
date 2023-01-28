@@ -1,7 +1,8 @@
-import { ALLDOGS, CHANGE_PAGE, ORDERDOGS } from '../action/action'
+import { ALLDOGS, CHANGE_PAGE, ORDERDOGSALPHABETICAL,ORDERDOGSREVERSEALPHABETICAL, COPYOFDOGS, ORDERDOGSBYORIGINDB, ORDERDOGSBYORIGINAPI } from '../action/action'
 
 const initialState = {
   dogs: [],
+  dogsWithFilters: [],
   currentPage: 1
 }
 
@@ -17,10 +18,30 @@ function reducer (state = initialState, action ){
                 ...state,
                 currentPage: action.page
             }
-    case ORDERDOGS:
+    case COPYOFDOGS:
       return {
                 ...state,
-                dogs: action.payload
+                dogsWithFilters: action.payload
+            }
+    case ORDERDOGSALPHABETICAL:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].sort((a, b) => a.name.localeCompare(b.name))
+            }
+    case ORDERDOGSREVERSEALPHABETICAL:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].sort((a, b) => b.name.localeCompare(a.name))
+            }
+    case ORDERDOGSBYORIGINDB:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.id.length > 3)
+            }
+    case ORDERDOGSBYORIGINAPI:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.id.length <= 3)
             }
     default:
       return state;
