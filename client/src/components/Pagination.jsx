@@ -15,12 +15,14 @@ function Pagination() {
     if (currentPage > 1) {
       dispatch(changePage(currentPage - 1))
     }
+    window.scrollTo(0, 0)
   }
 
   const handleNext = () => {
     if (currentPage < Math.ceil(dogs.length / 8)) {
       dispatch(changePage(currentPage + 1))
     }
+    window.scrollTo(0, 0)
   }
 
   return (

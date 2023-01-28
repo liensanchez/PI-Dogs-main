@@ -84,7 +84,6 @@ function Filters() {
     dispatch(orderDogsReversed())
   }
 
-
   const weightAscOrder = () => {
 
     dispatch(orderDogsWeightAsc())
@@ -113,11 +112,11 @@ function Filters() {
       </select>
       
       <select name="alphabeticGroup" id="">
-        <option value="" >Alphabetical Order</option>
-        <option value="" onClick={alphabeticalOrder}>Orden alfabetico</option>
-        <option value="" onClick={reversedAlphabeticalOrder}>Orden alfabetico invertido</option>
-        <option value="" onClick={weightAscOrder}>mayor</option>
-        <option value="" onClick={weightDscOrder}>menor</option>
+        <option value="" >Any Order</option>
+        <option value="" onClick={alphabeticalOrder}>Alphabetical Ascending</option>
+        <option value="" onClick={reversedAlphabeticalOrder}>Alphabetical Descending</option>
+        <option value="" onClick={weightAscOrder}>Weight Ascending</option>
+        <option value="" onClick={weightDscOrder}>Weight Descending</option>
       </select>
 
     </>

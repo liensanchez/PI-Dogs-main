@@ -6,23 +6,23 @@ function SearchBar() {
 
   const navigate = useNavigate()
 
-  const [busquedaRaza, setBusquedaRaza] = useState('')
+  const [searchBreed, setSearchBreed] = useState('')
 
 
   const handleChange = e => {
    
-    setBusquedaRaza(e.target.value)
+    setSearchBreed(e.target.value)
   }
   
   const search = async () => {
         
-    navigate(`/dogs?name=${busquedaRaza}`)
+    navigate(`/dogs?name=${searchBreed}`)
   }
 
   return (
     <>
       <input type='search' onChange={handleChange} name='search' placeholder='Ingresa una Raza'/>
-      <button onClick={search}>Buscar</button>
+      <button onClick={search}>Search breed</button>
     </>
   )
 }

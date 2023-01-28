@@ -8,6 +8,7 @@ import SearchResults from './components/SearchResults';
 import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
 import { allDogs, copyOfDogs } from './redux/action/action';
+import Form from './components/Form';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/home' element={<Home />}/>
         <Route path='/dogs/:id' element={<Detail/>}/>
         <Route path='/dogs' element={<SearchResults/>}/>
+        <Route path='/dogs/createdog' element={<Form/>}/>
       </Routes>
     </>
   );
