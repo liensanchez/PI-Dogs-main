@@ -6,6 +6,8 @@ export const COPYOFDOGS = 'COPYIFDOGS'
 export const ORDERDOGSBYORIGINDB = 'ORDERDOGSBYORIGINDB'
 export const ORDERDOGSBYORIGINAPI = 'ORDERDOGSBYORIGINAPI'
 export const ORDERDOGSBYTEMPERAMENT = 'ORDERDOGSBYTEMPERAMENT'
+export const ORDERDOGSBYWEIGHTASC = 'ORDERDOGSBYWEIGHTASC'
+export const ORDERDOGSBYWEIGHTDSC = 'ORDERDOGSBYWEIGHTDSC'
 
 
 
@@ -43,30 +45,20 @@ export const copyOfDogs = (dogs) => {
 }
   
 
-export const orderDogsAlphabetical = (dogs) => {
+export const orderByTemperament = (temperament) => {
 
   return {
     
-    type: ORDERDOGSALPHABETICAL,
+    type: ORDERDOGSBYTEMPERAMENT,
 
-    payload: dogs
-  }
-}
-
-
-export const orderDogsReversed = (dogs) => {
-
-  return {
-    
-    type: ORDERDOGSREVERSEALPHABETICAL,
-
-    payload: dogs
+    payload: temperament
   }
 }
 
 
 export const orderDogsByOriginDB = () => {
 
+  
   return {
     
     type: ORDERDOGSBYORIGINDB,
@@ -80,18 +72,42 @@ export const orderDogsByOriginAPI = () => {
 
   return {
     
-    type: ORDERDOGSBYORIGINAPI,
+    type: ORDERDOGSBYORIGINAPI
 
   }
 }
 
 
-export const orderByTemperament = (temperament) => {
+export const orderDogsAlphabetical = () => {
 
   return {
     
-    type: ORDERDOGSBYTEMPERAMENT,
+    type: ORDERDOGSALPHABETICAL,
+  }
+}
 
-    payload: temperament
+
+export const orderDogsReversed = () => {
+
+  return {
+    
+    type: ORDERDOGSREVERSEALPHABETICAL,
+  }
+}
+
+export const orderDogsWeightAsc = () => {
+
+  return {
+    
+    type: ORDERDOGSBYWEIGHTASC,
+  }
+}
+
+
+export const orderDogsWeightDsc = () => {
+
+  return {
+    
+    type: ORDERDOGSBYWEIGHTDSC,
   }
 }

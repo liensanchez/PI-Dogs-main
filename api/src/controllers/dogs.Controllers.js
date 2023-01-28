@@ -10,7 +10,7 @@ const allDogsInfo = async () => {
     return{
       id: dog.id,
       name: dog.name.toLowerCase(),
-      weight: dog.weight.metric,
+      weight: dog.weight.metric.split('-'),
       height: dog.height.metric,
       temperament: dog.temperament,
       lifeSpan: dog.life_span,

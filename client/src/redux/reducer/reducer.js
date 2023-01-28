@@ -1,4 +1,13 @@
-import { ALLDOGS, CHANGE_PAGE, ORDERDOGSALPHABETICAL,ORDERDOGSREVERSEALPHABETICAL, COPYOFDOGS, ORDERDOGSBYORIGINDB, ORDERDOGSBYORIGINAPI, ORDERDOGSBYTEMPERAMENT } from '../action/action'
+import { ALLDOGS,
+         CHANGE_PAGE,
+         ORDERDOGSALPHABETICAL,
+         ORDERDOGSREVERSEALPHABETICAL, 
+         COPYOFDOGS, 
+         ORDERDOGSBYORIGINDB, 
+         ORDERDOGSBYORIGINAPI, 
+         ORDERDOGSBYWEIGHTDSC, 
+         ORDERDOGSBYWEIGHTASC, 
+         ORDERDOGSBYTEMPERAMENT } from '../action/action'
 
 const initialState = {
   dogs: [],
@@ -33,6 +42,20 @@ function reducer (state = initialState, action ){
                 ...state,
                 dogsWithFilters:[...state.dogsWithFilters].sort((a, b) => b.name.localeCompare(a.name))
             }
+    case ORDERDOGSBYWEIGHTASC:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].sort(function(a, b) {
+                  return parseInt(a.weight[0]) - parseInt(b.weight[0]);
+                })
+            }  
+    case ORDERDOGSBYWEIGHTDSC:
+      return {
+                ...state,
+                dogsWithFilters:[...state.dogsWithFilters].sort(function(a, b) {
+                  return parseInt(a.weight[0]) + parseInt(b.weight[0]);
+                })
+            }  
     case ORDERDOGSBYORIGINDB:
       return {
                 ...state,
@@ -41,7 +64,7 @@ function reducer (state = initialState, action ){
     case ORDERDOGSBYORIGINAPI:
       return {
                 ...state,
-                dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.id.length <= 3)
+                dogsWithFilters:[...state.dogsWithFilters].filter(dog => dog.id <= 265)
             }
     case ORDERDOGSBYTEMPERAMENT:
       return {
