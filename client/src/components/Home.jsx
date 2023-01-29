@@ -10,6 +10,8 @@ function Home() {
   const dog = useSelector(state => state.dogsWithFilters)
 
   const currentPage = useSelector(state => state.currentPage)
+
+  console.log(dog)
   
   return (
     <>

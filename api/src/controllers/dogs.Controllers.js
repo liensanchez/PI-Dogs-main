@@ -10,11 +10,13 @@ const allDogsInfo = async () => {
     return{
       id: dog.id,
       name: dog.name.toLowerCase(),
+      weightMin: parseInt(dog.weight.metric.split('-')[0]),
+      weightMax: parseInt(dog.weight.metric.split('-')[1]),
       weight: dog.weight.metric.split('-'),
       height: dog.height.metric,
       temperament: dog.temperament,
       lifeSpan: dog.life_span,
-      image: dog.image.url
+      image: dog.image.url,
     }
   })
 
@@ -46,7 +48,18 @@ const allDogsInfo = async () => {
     }
   }) 
 
-  let allDogsInfo = [...dogApi, ...dogDB]
+  const completeDog = dogApi.map((dog)=> {
+    
+    if(dog.name == 'smooth fox terrier') dog.weight = ['6', '8'], dog.weightMin = 6
+    if(dog.name == 'pekingese') dog.weight = ['3', '6'], dog.weightMin = 3
+    if(dog.name == 'french bulldog') dog.weight = ['9', '13'], dog.weightMin = 9
+    if(dog.name == 'olde english bulldogge') dog.weight = ['22', '30'], dog.weightMin = 22
+
+    return dog
+  })
+
+
+  let allDogsInfo = [ ...dogDB, ...completeDog]
   
   return allDogsInfo
 }

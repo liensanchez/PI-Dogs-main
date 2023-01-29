@@ -95,6 +95,7 @@ export const orderDogsReversed = () => {
   }
 }
 
+
 export const orderDogsWeightAsc = () => {
 
   return {

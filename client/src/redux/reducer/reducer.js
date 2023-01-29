@@ -45,16 +45,12 @@ function reducer (state = initialState, action ){
     case ORDERDOGSBYWEIGHTASC:
       return {
                 ...state,
-                dogsWithFilters:[...state.dogsWithFilters].sort(function(a, b) {
-                  return parseInt(a.weight[0]) - parseInt(b.weight[0]);
-                })
+                dogsWithFilters:[...state.dogsWithFilters].sort((fdog, sdog) => {return fdog.weightMin - sdog.weightMin })
             }  
     case ORDERDOGSBYWEIGHTDSC:
       return {
                 ...state,
-                dogsWithFilters:[...state.dogsWithFilters].sort(function(a, b) {
-                  return parseInt(a.weight[0]) + parseInt(b.weight[0]);
-                })
+                dogsWithFilters:[...state.dogsWithFilters].sort((fdog, sdog) => {return sdog.weightMax - fdog.weightMax })
             }  
     case ORDERDOGSBYORIGINDB:
       return {

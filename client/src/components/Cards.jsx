@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 const DivDogs = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 45px;
   margin-bottom: 45px;

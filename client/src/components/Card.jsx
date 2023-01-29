@@ -10,11 +10,14 @@ const DivContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin:30px;
+  width:350px;
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius:10px;
 `;
 
 const Button = styled.button`
@@ -32,7 +35,7 @@ function Card(dog) {
         <h1>{dog.name}</h1>
         <Image src={dog.img} alt="" />
         <p>{dog.temperament}</p>
-        <p>De {dog.weight} kilos</p>
+        <p>Between {dog.weight} kilos</p>
         <Link to={`/dogs/${dog.id}` } > 
           <Button>Mas info</Button>
         </Link>

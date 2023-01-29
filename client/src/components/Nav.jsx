@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../img/logo.png'
 
@@ -14,11 +15,11 @@ const NavBar = styled.div`
 `
 
 const SearchContainer = styled.div`
-  
+  display: flex;
 `
 
 const Logo = styled.img`
-  width: 5%;
+  width: 10%;
 `;
 
 
@@ -28,7 +29,9 @@ function Nav() {
   return (
     <NavContainer>
       <NavBar>
-        <Logo src={logo} alt="" />
+        <Link to='/home'>
+          <Logo src={logo} alt="" />
+        </Link>
         <SearchContainer>
           <SearchBar/>
         </SearchContainer>
