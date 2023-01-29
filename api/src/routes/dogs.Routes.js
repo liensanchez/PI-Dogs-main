@@ -56,7 +56,7 @@ dogsRoutes.post('/', async (req, res) =>{
     
     const { name, height, weight, lifeSpan, temperament} = req.body
 
-    if(![name, height, weight])return Error ('Faltan datos obligatorios')
+    if(![name, height, weight])return Error ('Faltan datos obligatorios') 
 
     const newDog = await createDog(name, height, weight, lifeSpan, temperament)
 

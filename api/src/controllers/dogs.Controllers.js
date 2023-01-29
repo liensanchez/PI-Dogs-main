@@ -88,7 +88,7 @@ const createDog = async ( name, height, weight, lifeSpan, temperament) => {
   
   const newDog = await Dog.create({name, height, weight, lifeSpan})
 
-  const arrTemperament = temperament.split(', ')
+  const arrTemperament = temperament.split(', ', ' ')
 
   const temp = await Promise.all(arrTemperament.map(async (temp) => {
 
