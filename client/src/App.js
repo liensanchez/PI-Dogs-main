@@ -12,7 +12,6 @@ import Form from './components/Form';
 
 
 
-
 function App() {
 
   const location = useLocation()
@@ -44,3 +43,13 @@ function App() {
 }
 
 export default App;
+
+
+/* 
+    For text, you could use the darkest color (#8d7070) for headings and the second darkest color (#aa8c8b) for body text. This would provide good contrast and make the text easy to read.
+
+    For buttons, you could use the lightest color (#ede1e1) as the background color. This would make the buttons stand out against other elements on the page and be easily clickable.
+
+    For navigation, footer, and cards, you could use the second lightest color (#d9c1c1) as the background color. This would provide a neutral background that won't distract from the content, but still provides a subtle contrast.
+
+*/
