@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import logo from '../img/logo.png'
 
 
-
 const DivContainer = styled.div`
-  display:flex;
+  height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
 `
+
 
 const DivInter = styled.div`
   background-color:#8D7070;
@@ -20,6 +20,8 @@ const DivInter = styled.div`
   align-items: center;
   justify-content: center;
   padding: 50px;
+  width: 300px;
+  box-shadow: 6px 6px 18px;
 `;
 
 const Image = styled.img`
@@ -27,13 +29,20 @@ const Image = styled.img`
 `;
 
 const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
   background-color:#ede1e1;
   color:#8d7070;
-  border-radius:5px;
+  border-radius: 5px;
+  margin:20px;
+  padding:5px;
+  border: none;
+  transition: all 0.8s;
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
+  display:flex;
   flex-direction: row;
   justify-content: space-around;
 `;
@@ -42,7 +51,6 @@ const ButtonContainer = styled.div`
 function Index() {
 
   return (
-
     <DivContainer>
       <DivInter>
         <Image src={logo} alt="" />
@@ -58,7 +66,6 @@ function Index() {
         <p>2023 FullStack Soy Henry</p>
       </DivInter>
     </DivContainer>
-
 
   )
 }

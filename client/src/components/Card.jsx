@@ -10,8 +10,9 @@ const DivContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding:50px;
   margin:30px;
-  width:350px;
+  width:300px;
 `;
 
 const Image = styled.img`

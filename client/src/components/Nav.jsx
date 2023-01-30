@@ -10,31 +10,52 @@ const NavContainer = styled.div`
 const NavBar = styled.div`
   display:flex;
   flex-direction: row;
+  justify-content: space-around;
   background-color: #8d7070;
-  justify-content: space-between;
 `
 
 const SearchContainer = styled.div`
-  display: flex;
+  display:flex;
+  align-items: center;
+`
+const LogoContainer = styled.div`
+
+`
+const ButtonContainer = styled.div`
+  display:flex;
+  align-items: center;
 `
 
 const Logo = styled.img`
-  width: 10%;
+  height:50px;
 `;
 
-
+const Button = styled.button`
+  background-color:#ede1e1;
+  color:#8d7070;
+  border-radius:5px;
+  margin-left:5px;
+  border: none;
+`;
 
 
 function Nav() {
   return (
     <NavContainer>
       <NavBar>
-        <Link to='/home'>
-          <Logo src={logo} alt="" />
-        </Link>
+        <LogoContainer>
+          <Link to='/home'>
+            <Logo src={logo} alt="" />
+          </Link>
+        </LogoContainer>
         <SearchContainer>
           <SearchBar/>
         </SearchContainer>
+        <ButtonContainer>
+          <Link to ='/dogs/createdog' >
+            <Button>Create New Breed</Button>
+          </Link>
+        </ButtonContainer>
       </NavBar>
     </NavContainer>
   )

@@ -10,10 +10,11 @@ const DivContainer = styled.div`
   width:100%;
 `
 const FilterDiv = styled.div`
-display:flex;
-flex-direction: row;
-background-color: #ede1e1;
-justify-content: space-around;
+  display:flex;
+  flex-direction: row;
+  height:50px;
+  background-color: #ede1e1;
+  justify-content: space-around;
 `
 
 
