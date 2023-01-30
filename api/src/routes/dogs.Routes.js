@@ -54,11 +54,11 @@ dogsRoutes.get('/:id', async (req,res) => {
 dogsRoutes.post('/', async (req, res) =>{
   try {
     
-    const { name, height, weight, lifeSpan, temperament} = req.body
+    const {  name, height, weight, lifeSpan, image, temperament} = req.body
 
     if(![name, height, weight])return Error ('Faltan datos obligatorios') 
 
-    const newDog = await createDog(name, height, weight, lifeSpan, temperament)
+    const newDog = await createDog( name, height, weight, lifeSpan, image, temperament)
 
     res.status(200).json(newDog)
 

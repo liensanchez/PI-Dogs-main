@@ -2,6 +2,61 @@ import React from 'react'
 import axios from 'axios'
 import { useState} from 'react'
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+
+
+const DivContainer = styled.div`
+  margin-top: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:#ede1e1;
+  width: 400px;
+  padding: 40px;
+  border-radius:10px;
+  box-shadow: 6px 6px 18px;
+`
+
+const FormContainer = styled.div`
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const InputForm = styled.input`
+  margin-top:5px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+`
+
+const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
+  background-color:#8d7070;
+  color:#ede1e1;
+  border-radius: 5px;
+  padding:5px;
+  border: none;
+  box-shadow: #2c2c2c 1px 1px 2px;
+  font-size: 15px;
+  transition: all 0.8s;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 15px;
+  display:flex;
+  justify-content: center;
+`
 
 
 function Form() {
@@ -17,6 +72,7 @@ function Form() {
     minLifeSpan: '',
     maxLifeSpan: '',
     lifeSpan: '',
+    img: '',
     temperament: ''
   });
 
@@ -57,42 +113,55 @@ function Form() {
 
 
   return (
-    <>
+    <DivContainer>
+    <Container>
       <Link to='/home'>
-        <button>Back to Home</button>
+        <Button>Back to Home</Button>
       </Link>
 
+
     <form onSubmit={submit}>
+      <FormContainer>
 
       <label htmlFor="">Breed Name</label>
-      <input type="text" name="name" id="" value={breed.name} onChange={handleChange}/>
+      <InputForm type="text" name="name" id="" value={breed.name} onChange={handleChange}/>
 
       <label htmlFor="">Minimun Height</label>
-      <input type="text" name="minHeight" id="" value={breed.minHeight} onChange={handleChange}/>
+      <InputForm type="text" name="minHeight" id="" value={breed.minHeight} onChange={handleChange}/>
 
       <label htmlFor="">Maximum Height</label>
-      <input type="text" name="maxHeight" id="" value={breed.maxHeight} onChange={handleChange}/>
+      <InputForm type="text" name="maxHeight" id="" value={breed.maxHeight} onChange={handleChange}/>
 
       <label htmlFor="">Minimun Weight</label>
-      <input type="text" name="minWeight" id="" value={breed.minWeight} onChange={handleChange}/>
+      <InputForm type="text" name="minWeight" id="" value={breed.minWeight} onChange={handleChange}/>
 
       <label htmlFor="">Maximum Weight</label>
-      <input type="text" name="maxWeight" id="" value={breed.maxWeight} onChange={handleChange}/>
+      <InputForm type="text" name="maxWeight" id="" value={breed.maxWeight} onChange={handleChange}/>
 
       <label htmlFor="">Minimun Life Span</label>
-      <input type="text" name="minLifeSpan" id="" value={breed.minLifeSpan} onChange={handleChange}/>
+      <InputForm type="text" name="minLifeSpan" id="" value={breed.minLifeSpan} onChange={handleChange}/>
 
       <label htmlFor="">Maximum Life Span</label>
-      <input type="text" name="maxLifeSpan" id="" value={breed.maxLifeSpan} onChange={handleChange}/>
+      <InputForm type="text" name="maxLifeSpan" id="" value={breed.maxLifeSpan} onChange={handleChange}/>
+
+      <label htmlFor="">Image URL</label>
+      <InputForm type="text" name="img" id="" value={breed.img} onChange={handleChange}/>
 
       <label htmlFor="">Temperaments</label>
-      <input type="text" name="temperament" id="" value={breed.temperament} onChange={handleChange} />
+      <InputForm type="text" name="temperament" id="" value={breed.temperament} onChange={handleChange} />
 
-      <button type='submit'>Create Breed</button>
+      </FormContainer>
+
+      <ButtonContainer>
+        <Button type='submit'>Create Breed</Button>
+      </ButtonContainer>
+
     </form>
 
 
-    </>
+    </Container>
+    </DivContainer>
+
   )
 }
 

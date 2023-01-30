@@ -4,9 +4,6 @@ import styled from 'styled-components'
 
 
 const DivContainer = styled.div`
-  &:hover{
-    transform: scale(1.05);
-  }
   background-color:#8D7070;
   border-radius:10px;
   display: flex;
@@ -18,7 +15,6 @@ const DivContainer = styled.div`
   box-shadow: 6px 6px 18px;
   text-align: center;
   padding:5px;
-  transition: all 0.8s;
 `;
 
 const Image = styled.img`

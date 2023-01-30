@@ -7,16 +7,16 @@ import styled from 'styled-components'
 
 
 const DivContainer = styled.div`
-  padding-top:45px;
+  margin-top: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
 const DivInter = styled.div`
-  padding-top:45px;
   background-color:#8D7070;
   border-radius:10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,6 @@ const Image = styled.img`
 const DataContainer = styled.div`
   display: flex;
   align-items: center;
-
   justify-content: center;
 `
 
@@ -43,20 +42,21 @@ const RightContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding:20px;
 `;
 
 const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border:solid 1px black;
+  
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  border:solid 1px black;
+`
+
+const InfoContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:20px;
 `
 
 const Button = styled.button`
@@ -91,6 +91,8 @@ function Detail() {
     getData()
   }, [id])
 
+  console.log(dog)
+
   return (
     <DivContainer>
 
@@ -103,21 +105,22 @@ function Detail() {
                   <Button>Back to Home</Button>
                 </Link>
               </ButtonContainer>
-              <h2>Temperaments: </h2>
-              <p>{dog.temperament}</p>
-              <h2>Weight: </h2>
-              <p>From {dog.weight[0]} to {dog.weight[1]} kilos</p>
-              <h2>Height: </h2>
-              <p>From {dog.height} cm</p>
-              <h2>Life Span: </h2>
-              <p>Between {dog.lifeSpan} of life</p>
+              <InfoContainer>
+                <h2>Temperaments: </h2>
+                <p>{dog.temperament}</p>
+                <h2>Weight: </h2>
+                <p>From {dog.weight[0]} to {dog.weight[1]} kilos</p>
+                <h2>Height: </h2>
+                <p>From {dog.height} cm</p>
+                <h2>Life Span: </h2>
+                <p>Between {dog.lifeSpan} of life</p>
+              </InfoContainer>
             </LeftContainer>
 
             <RightContainer>
               <h1>Breed:</h1>
               <h1>{dog.name}</h1>
               <Image src={dog.image} alt="" />
-              
             </RightContainer>
 
           </DataContainer>

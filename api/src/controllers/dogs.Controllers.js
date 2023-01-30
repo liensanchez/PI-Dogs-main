@@ -40,7 +40,7 @@ const allDogsInfo = async () => {
     return{
       id: dog.id,
       name: dog.name.toLowerCase(),
-      weight: dog.weight,
+      weight: dog.weight.split('-'),
       height: dog.height,
       temperament:  dog.Temperaments.map(temp => temp.name).join(', '),
       lifeSpan: dog.life_span,
@@ -97,11 +97,11 @@ const searchID = async (dogId) => {
 }
 
 
-const createDog = async ( name, height, weight, lifeSpan, temperament) => {
-  
-  const newDog = await Dog.create({name, height, weight, lifeSpan})
+const createDog = async ( name, height, weight, lifeSpan, image, temperament) => {
 
-  const arrTemperament = temperament.split(', ', ' ')
+  const newDog = await Dog.create({name, height, weight, lifeSpan, image})
+
+  const arrTemperament = temperament.split(',')
 
   const temp = await Promise.all(arrTemperament.map(async (temp) => {
 
