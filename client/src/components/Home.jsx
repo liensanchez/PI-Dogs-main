@@ -3,6 +3,13 @@ import {useSelector} from 'react-redux'
 import Cards from './Cards'
 import Pagination from './Pagination'
 import Filters from './Filters'
+import styled from 'styled-components'
+
+const DivContainer = styled.div`
+  display: flex;
+`
+
+
 
 function Home() {
 
@@ -12,8 +19,10 @@ function Home() {
   
   return (
     <>
+    <DivContainer>
       <Filters/>
       <Cards dog={dog.slice((currentPage-1) *8, currentPage * 8)}/>
+    </DivContainer>
       <Pagination/>
     </>
   )

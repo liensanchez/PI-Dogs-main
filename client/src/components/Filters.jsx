@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
@@ -7,16 +7,37 @@ import styled from 'styled-components'
 
 
 const DivContainer = styled.div`
-  width:100%;
-`
-const FilterDiv = styled.div`
   display:flex;
-  flex-direction: row;
-  height:50px;
-  background-color: #ede1e1;
-  justify-content: space-around;
-`
+  margin: 30px;
+`;
 
+const FilterDiv = styled.div`
+  height: 50vh;
+  background-color: #ede1e1;
+  padding: 25px;
+`;
+
+const Select = styled.select`
+  padding: 5px;
+  margin: 5px;
+  background-color: #8d7070;
+  color: #FDF4ED;
+  border-radius: 5px;
+  border: none;  
+` 
+
+const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
+  background-color:#8d7070;
+  color:#ede1e1;
+  border-radius: 5px;
+  margin:20px;
+  padding:5px;
+  border: none;
+  transition: all 0.8s;
+`;
 
 
 function Filters() {
@@ -24,6 +45,7 @@ function Filters() {
   const dispatch = useDispatch()
 
   const allTheDogs = useSelector(state => state.dogs) 
+
 
 
   const [temperament, setTemperament] = useState([])
@@ -86,6 +108,11 @@ function Filters() {
      }    
   } 
 
+  const filterReset = () => {
+
+    dispatch(copyOfDogs(allTheDogs))
+  }
+
 
   const alphabeticalOrder = () => {
 
@@ -108,30 +135,54 @@ function Filters() {
   }
 
 
+  const temperamentRef = useRef(null);
+  const originRef = useRef(null);
+  const orderRef = useRef(null);
+  const resetFilters = () => {
+    dispatch(copyOfDogs(allTheDogs))
+    temperamentRef.current.value = 'defaultTemperaments'
+    originRef.current.value = 'defaultOrigin'
+    orderRef.current.value = 'defaultOrder'
+  }
+
 
   return (
     <DivContainer>
       <FilterDiv>
-        <select name="select">
-          <option>All Temperaments</option>
+        <h2>Filters:</h2>
+
+        <div>
+        <label>Temperaments</label>
+        <Select name="temperament" ref={temperamentRef}>
+          <option value='defaultTemperaments' onClick={filterReset}>All Temperaments</option>
           {temperament.map((temperament) => (
                                   <option value={temperament.id} key={temperament.id} onClick={() => temperamentOrder(temperament.name)} >{temperament.name}</option>
                               ))} 
-        </select>
+        </Select>          
+        </div>
 
-        <select name="originGroup" id="">
-          <option value="" /* onClick={allOrigins} */>All origins</option>
-          <option value="" onClick={originOrderDB}>Database</option>
-          <option value="" onClick={originOrderAPI}>API</option>
-        </select>
-        
-        <select name="alphabeticGroup" id="">
-          <option value="" >Any Order</option>
-          <option value="" onClick={alphabeticalOrder}>Alphabetical Ascending</option>
-          <option value="" onClick={reversedAlphabeticalOrder}>Alphabetical Descending</option>
-          <option value="" onClick={weightAscOrder}>Weight Ascending</option>
-          <option value="" onClick={weightDscOrder}>Weight Descending</option>
-        </select>
+        <div>
+        <label>Origin</label> <br></br>
+        <Select name="originGroup" id="" ref={originRef}>
+          <option value='defaultOrigin' onClick={filterReset}>All origins</option>
+          <option value="Database" onClick={originOrderDB}>Database</option>
+          <option value="Api" onClick={originOrderAPI}>API</option>
+        </Select>          
+        </div>
+
+        <div>
+        <label>Orders</label>
+        <Select name="alphabeticGroup" id="" ref={orderRef}>
+          <option value='defaultOrder' onClick={filterReset}>Any Order</option>
+          <option value="alphabeticalOrder" onClick={alphabeticalOrder}>Alphabetical Ascending</option>
+          <option value="reversedAlphabeticalOrder" onClick={reversedAlphabeticalOrder}>Alphabetical Descending</option>
+          <option value="weightAscOrder" onClick={weightAscOrder}>Weight Ascending</option>
+          <option value="weightDscOrder" onClick={weightDscOrder}>Weight Descending</option>
+        </Select>          
+        </div>
+
+        <Button onClick={resetFilters}>Reset Filters</Button>
+
       </FilterDiv>
     </DivContainer>
   )
