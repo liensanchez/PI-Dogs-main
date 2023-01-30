@@ -11,7 +11,6 @@ const DivContainer = styled.div`
   justify-content: center;
 `
 
-
 const DivInter = styled.div`
   background-color:#8D7070;
   border-radius:10px;

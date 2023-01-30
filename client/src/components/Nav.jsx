@@ -12,7 +12,7 @@ const NavBar = styled.div`
   flex-direction: row;
   justify-content: space-around;
   background-color: #8d7070;
-  box-shadow: 6px 6px 18px;
+  box-shadow: 0px 6px 12px;
 `
 
 const SearchContainer = styled.div`
