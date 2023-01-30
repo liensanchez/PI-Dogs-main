@@ -8,11 +8,16 @@ const SearchContainer = styled.div`
 `
 
 const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
   background-color:#ede1e1;
   color:#8d7070;
   border-radius:5px;
   margin-left:5px;
   border: none;
+  box-shadow: #2c2c2c 1px 1px 2px;
+  transition: all 0.8s;
 `;
 
 const Input = styled.input`

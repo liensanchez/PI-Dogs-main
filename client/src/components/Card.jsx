@@ -4,27 +4,42 @@ import styled from 'styled-components'
 
 
 const DivContainer = styled.div`
+  &:hover{
+    transform: scale(1.05);
+  }
   background-color:#8D7070;
   border-radius:10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding:50px;
-  margin:30px;
-  width:300px;
+  margin: 20px;
+  width: 300px;
+  box-shadow: 6px 6px 18px;
+  text-align: center;
+  padding:5px;
+  transition: all 0.8s;
 `;
 
 const Image = styled.img`
   width: 150px;
   height: 150px;
   border-radius:10px;
+  box-shadow: 2px 2px 8px;
 `;
 
 const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
   background-color:#ede1e1;
   color:#8d7070;
-  border-radius:5%;
+  border-radius: 5px;
+  margin:10px;
+  border: none;
+  box-shadow: #2c2c2c 1px 1px 2px;
+  font-size: 15px;
+  transition: all 0.8s;
 `;
 
 
@@ -35,10 +50,13 @@ function Card(dog) {
       <DivContainer key={dog.id}>
         <h1>{dog.name}</h1>
         <Image src={dog.img} alt="" />
-        <p>{dog.temperament}</p>
-        <p>Between {dog.weight} kilos</p>
+        <div>
+          <p>{dog.temperament}</p>
+          <h3>Weight:</h3>
+          <p>From {dog.weight[0]} to {dog.weight[1]} kilos</p>
+        </div>
         <Link to={`/dogs/${dog.id}` } > 
-          <Button>Mas info</Button>
+          <Button>More Info</Button>
         </Link>
       </DivContainer>
     </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
-
 import styled from 'styled-components'
+
 
 
 const DivDogs = styled.div`
@@ -26,7 +26,9 @@ function Cards(prop) {
   return (
     <DivDogs>
       {showDog}
-    </DivDogs>
+    </DivDogs> 
+
+
   )
 }
 

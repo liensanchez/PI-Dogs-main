@@ -12,6 +12,7 @@ const NavBar = styled.div`
   flex-direction: row;
   justify-content: space-around;
   background-color: #8d7070;
+  box-shadow: 6px 6px 18px;
 `
 
 const SearchContainer = styled.div`
@@ -19,7 +20,8 @@ const SearchContainer = styled.div`
   align-items: center;
 `
 const LogoContainer = styled.div`
-
+  display:flex;
+  align-items: center;
 `
 const ButtonContainer = styled.div`
   display:flex;
@@ -31,11 +33,16 @@ const Logo = styled.img`
 `;
 
 const Button = styled.button`
+  &:hover{
+    transform: scale(1.15);
+  }
   background-color:#ede1e1;
   color:#8d7070;
   border-radius:5px;
   margin-left:5px;
   border: none;
+  box-shadow: #2c2c2c 1px 1px 2px;
+  transition: all 0.8s;
 `;
 
 

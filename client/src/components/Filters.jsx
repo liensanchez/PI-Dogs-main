@@ -12,9 +12,16 @@ const DivContainer = styled.div`
 `;
 
 const FilterDiv = styled.div`
+  width: 200px;
+  margin-top: 45px;
   height: 50vh;
   background-color: #ede1e1;
   padding: 25px;
+  border-radius:10px;
+  box-shadow: 6px 6px 18px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Select = styled.select`
@@ -45,8 +52,6 @@ function Filters() {
   const dispatch = useDispatch()
 
   const allTheDogs = useSelector(state => state.dogs) 
-
-
 
   const [temperament, setTemperament] = useState([])
 
@@ -136,12 +141,19 @@ function Filters() {
 
 
   const temperamentRef = useRef(null);
+
   const originRef = useRef(null);
+
   const orderRef = useRef(null);
+
   const resetFilters = () => {
+
     dispatch(copyOfDogs(allTheDogs))
+
     temperamentRef.current.value = 'defaultTemperaments'
+
     originRef.current.value = 'defaultOrigin'
+    
     orderRef.current.value = 'defaultOrder'
   }
 

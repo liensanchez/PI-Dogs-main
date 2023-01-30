@@ -39,6 +39,7 @@ const Button = styled.button`
   padding:5px;
   border: none;
   transition: all 0.8s;
+  box-shadow: #2c2c2c 1px 1px 2px;
 `;
 
 const ButtonContainer = styled.div`
