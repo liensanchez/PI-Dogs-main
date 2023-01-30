@@ -91,7 +91,6 @@ function Detail() {
     getData()
   }, [id])
 
-  console.log(dog)
 
   return (
     <DivContainer>

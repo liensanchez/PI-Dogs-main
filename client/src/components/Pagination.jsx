@@ -30,6 +30,9 @@ const ButttonConatiner = styled.div`
   padding:5px;
   border: none;
   box-shadow: 6px 6px 18px;
+  & :disabled{
+    display:none;
+  }
 `;
 
 
@@ -46,14 +49,14 @@ function Pagination() {
     if (currentPage > 1) {
       dispatch(changePage(currentPage - 1))
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({top: 0, left: 0})
   }
 
   const handleNext = () => {
     if (currentPage < Math.ceil(dogs.length / 8)) {
       dispatch(changePage(currentPage + 1))
     }
-    window.scrollTo({ top: 10, behavior: 'smooth' })
+    window.scrollTo({top: 0, left: 0})
   }
 
   return (

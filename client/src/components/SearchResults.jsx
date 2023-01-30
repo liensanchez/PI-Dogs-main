@@ -5,6 +5,15 @@ import { useState, useEffect } from 'react'
 import {useSelector} from 'react-redux'
 import Cards from './Cards'
 import Pagination from './Pagination'
+import styled from 'styled-components'
+import Error from './Error'
+
+
+const DivContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 
 function SearchResults() {
@@ -32,13 +41,18 @@ function SearchResults() {
 
   }, [search])
 
+  let errorSearch = 'No dog found'
 
   return (
     <>
     <h1>Search Results:</h1>
+    <DivContainer>
       <Cards dog={dogs.slice((currentPage-1) *8, currentPage * 8)}/>
-      {dogs.length > 8 && <Pagination/>}
+      {dogs.length > 8 && <Pagination/> }
+    </DivContainer>
+    {dogs.length == 0 && <Error props={errorSearch} />}
     </>
+
   )
 }
 

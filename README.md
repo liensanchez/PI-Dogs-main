@@ -94,7 +94,7 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 
 #### Tecnologías necesarias
 
-- [ ] React
+- [X] React
 - [X] Redux
 - [X] Express
 - [X] Sequelize - Postgres
@@ -105,7 +105,7 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 __Pagina inicial__: deben armar una landing page con
 
-- [ ] Alguna imagen de fondo representativa al proyecto
+- [X] Alguna imagen de fondo representativa al proyecto
 - [X] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener

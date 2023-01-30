@@ -53,6 +53,7 @@ function Filters() {
 
   const allTheDogs = useSelector(state => state.dogs) 
 
+
   const [temperament, setTemperament] = useState([])
 
   useEffect(() => {
@@ -80,6 +81,7 @@ function Filters() {
   const originOrderDB = (dogs) => {
 
     if (recharge === false) {
+
       dispatch(copyOfDogs(allTheDogs))
 
       dispatch(orderDogsByOriginDB(dogs)) 
@@ -98,6 +100,7 @@ function Filters() {
   const originOrderAPI = (dogs) => {
 
      if (recharge === false) {
+      
       dispatch(copyOfDogs(allTheDogs))
 
       dispatch(orderDogsByOriginAPI(dogs))
