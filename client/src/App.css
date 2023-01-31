@@ -1,8 +1,13 @@
 .App {
   text-align: center;
 }
+@font-face {
+  font-family: Monserrat;
+  src: url('./fonts/Montserrat-VariableFont_wght.ttf');
+}
 
 body{
+  font-family: 'Monserrat';
   background-image: url('./img/background.png');
   background-repeat: no-repeat;
   background-size: cover;

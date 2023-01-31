@@ -60,12 +60,12 @@ function Index() {
         </Link>
         <h3>By Lien Sanchez</h3>
         <ButtonContainer>
-          <Link to={{ pathname: "https://github.com/liensanchez" }} target="_blank" >
+{/*           <Link to={pathname: "https://github.com/liensanchez" } target="_blank" > */}
             <Button>Github</Button>
-          </Link>
-          <Link to={{ pathname: "https://www.linkedin.com/in/liensanchez/" }} target="_blank">
+{/*           </Link> */}
+{/*           <Link to={{ pathname: "https://www.linkedin.com/in/liensanchez/" }} target="_blank"> */}
             <Button>LinkedIn</Button>
-          </Link>
+{/*           </Link> */}
         </ButtonContainer>
         <p>2023 FullStack Soy Henry</p>
       </DivInter>
