@@ -50,7 +50,7 @@ function SearchResults() {
       <Cards dog={dogs.slice((currentPage-1) *8, currentPage * 8)}/>
       {dogs.length > 8 && <Pagination/> }
     </DivContainer>
-    {dogs.length == 0 && <Error props={errorSearch} />}
+    {dogs.length === 0 && <Error props={errorSearch} />}
     </>
 
   )

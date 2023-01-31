@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 
@@ -60,6 +60,8 @@ const ButtonContainer = styled.div`
 
 
 function Form() {
+
+  const navigate = useNavigate()
 
   const [breed, setBreed] = useState({
     name: '',
@@ -139,7 +141,7 @@ function Form() {
 
   const submit = (e) => {
     e.preventDefault()
-    if((!error.name)|| (!error.temperament)){
+    if((!error.name) || (!error.temperament)){
       axios({
         method: "post",
         url: "http://localhost:3003/dogs",
@@ -151,8 +153,11 @@ function Form() {
           temperament: breed.temperament
         }
       })
-    }else {
-      alert('HAY ERRORES MATI, HAY ERRORES, HAY MUCHOS ERROREEEES')
+      navigate('/home', { replace: true })
+    }else if(error.name){
+      alert('the breed needs a name')
+    }else if(error.name){
+      alert('the breed needs a name') 
     }
 
   }
