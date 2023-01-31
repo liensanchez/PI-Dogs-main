@@ -73,6 +73,10 @@ function Filters() {
       dispatch(copyOfDogs(allTheDogs))
 
       dispatch(orderByTemperament(temperament))
+
+      originRef.current.value = 'defaultOrigin'
+    
+      orderRef.current.value = 'defaultOrder'
   }
 
   

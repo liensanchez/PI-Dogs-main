@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 const DivContainer = styled.div`
   background-color:#8D7070;
+  color:#ede1e1;
   border-radius:10px;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@ const DivContainer = styled.div`
   justify-content: center;
   margin: 20px;
   width: 300px;
-  box-shadow: 6px 6px 18px;
+  box-shadow: #2c2c2c 6px 6px 18px;
   text-align: center;
   padding:5px;
 `;
@@ -21,7 +22,7 @@ const Image = styled.img`
   width: 150px;
   height: 150px;
   border-radius:10px;
-  box-shadow: 2px 2px 8px;
+  box-shadow: #2c2c2c  2px 2px 8px;
 `;
 
 const Button = styled.button`

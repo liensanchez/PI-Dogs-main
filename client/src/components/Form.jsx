@@ -58,6 +58,10 @@ const ButtonContainer = styled.div`
   justify-content: center;
 `
 
+const ErrorText = styled.p`
+  color: red;
+`
+
 
 function Form() {
 
@@ -93,17 +97,25 @@ function Form() {
     temperament: ''
   });
 
+  const regexName = /^[a-zA-Z]{3,14}$/
+
+
   const validate = (breed) => {
 
     const error = {} 
 
     if (!breed.name) error.name = 'This field is required';
-    if (breed.minHeight < 0) error.minHeight = 'Sólo números positivos'
-    if (breed.maxHeight < 0) error.maxHeight = 'Sólo números positivos'
-    if (breed.maxWeight < 0) error.maxWeight = 'Sólo números positivos'
-    if (breed.minWeight < 0) error.minWeight = 'Sólo números positivos'
-    if (breed.minLifeSpan < 0) error.minLifeSpan = 'Sólo números positivos'
-    if (breed.maxLifeSpan < 0) error.maxLifeSpan = 'Sólo números positivos'
+    if (!regexName.test(breed.name)) error.name = 'Must have between 3 to 14 letters';
+    if (breed.name.lenght > 10) error.name = 'This name is to large';
+    if (breed.minHeight < 0) error.minHeight = 'Only positive numbers'
+    if (breed.maxHeight < 0) error.maxHeight = 'Only positive numbers'
+    if (breed.maxHeight < breed.minHeight) error.maxHeight = 'The maximum height must be greater than the minimum'
+    if (breed.minWeight < 0) error.minWeight = 'Only positive numbers'
+    if (breed.maxWeight < 0) error.maxWeight = 'Only positive numbers'
+    if (breed.maxWeight < breed.minWeight) error.maxWeight= 'The maximum weight must be greater than the minimum'
+    if (breed.minLifeSpan < 0) error.minLifeSpan = 'Only positive numbers'
+    if (breed.maxLifeSpan < 0) error.maxLifeSpan = 'Only positive numbers'
+    if (breed.maxLifeSpan < breed.minLifeSpan) error.maxLifeSpan= 'The maximum life span must be greater than the minimum'
     if (!breed.temperament) error.temperament = 'This field is required';
 
 
@@ -176,38 +188,38 @@ function Form() {
 
       <label htmlFor="">Breed Name</label>
       <InputForm type="text" name="name" id="" value={breed.name} onChange={handleChange}/>
-      <p className='danger'>{error.name && error.name} </p>
+      <ErrorText >{error.name && error.name} </ErrorText>
 
       <label htmlFor="">Minimun Height</label>
       <InputForm type="number" name="minHeight" id="" value={breed.minHeight} onChange={handleChange}/>
-      <p className='danger'>{error.minHeight && error.minHeight} </p>
+      <ErrorText >{error.minHeight && error.minHeight} </ErrorText>
 
       <label htmlFor="">Maximum Height</label>
       <InputForm type="number" name="maxHeight" id="" value={breed.maxHeight} onChange={handleChange}/>
-      <p className='danger'>{error.maxHeight && error.maxHeight} </p>
+      <ErrorText >{error.maxHeight && error.maxHeight} </ErrorText>
 
       <label htmlFor="">Minimun Weight</label>
       <InputForm type="number" name="minWeight" id="" value={breed.minWeight} onChange={handleChange}/>
-      <p className='danger'>{error.minWeight && error.minWeight} </p>
+      <ErrorText >{error.minWeight && error.minWeight} </ErrorText>
 
       <label htmlFor="">Maximum Weight</label>
       <InputForm type="number" name="maxWeight" id="" value={breed.maxWeight} onChange={handleChange}/>
-      <p className='danger'>{error.maxWeight && error.maxWeight} </p>
+      <ErrorText >{error.maxWeight && error.maxWeight} </ErrorText>
 
       <label htmlFor="">Minimun Life Span</label>
       <InputForm type="number" name="minLifeSpan" id="" value={breed.minLifeSpan} onChange={handleChange}/>
-      <p className='danger'>{error.minLifeSpan && error.minLifeSpan} </p>
+      <ErrorText >{error.minLifeSpan && error.minLifeSpan} </ErrorText>
 
       <label htmlFor="">Maximum Life Span</label>
       <InputForm type="number" name="maxLifeSpan" id="" value={breed.maxLifeSpan} onChange={handleChange}/>
-      <p className='danger'>{error.maxLifeSpan && error.maxLifeSpan} </p>
+      <ErrorText >{error.maxLifeSpan && error.maxLifeSpan} </ErrorText>
 
       <label htmlFor="">Image URL</label>
       <InputForm type="text" name="img" id="" value={breed.img} onChange={handleChange}/>
 
       <label htmlFor="">Temperaments</label>
       <InputForm type="text" name="temperament" id="" value={breed.temperament} onChange={handleChange} />
-      <p className='danger'>{error.temperament && error.temperament} </p>
+      <ErrorText >{error.temperament && error.temperament} </ErrorText>
 
       </FormContainer>
 

@@ -7,6 +7,7 @@ import logo from '../img/logo.png'
 const NavContainer = styled.div`
   width:100%;
 `
+
 const NavBar = styled.div`
   display:flex;
   flex-direction: row;
@@ -19,10 +20,12 @@ const SearchContainer = styled.div`
   display:flex;
   align-items: center;
 `
+
 const LogoContainer = styled.div`
   display:flex;
   align-items: center;
 `
+
 const ButtonContainer = styled.div`
   display:flex;
   align-items: center;
