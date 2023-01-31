@@ -26,7 +26,7 @@ dogsRoutes.get('/', async (req, res) => {
 
   } catch (error) {
 
-    res.status(404).send({error:error.message})
+    res.status(404).json({error: error.message})
   }
 }) 
 
@@ -46,7 +46,7 @@ dogsRoutes.get('/:id', async (req,res) => {
     else throw Error ('No existe ese perro')
   } catch (error) {
 
-    res.status(404).send({error:error.message})
+    res.status(404).json({error: error.message})
   } 
 })
 
@@ -64,7 +64,7 @@ dogsRoutes.post('/', async (req, res) =>{
 
   } catch (error) {
     
-    res.status(404).send({error:error.message})
+    res.status(404).json({error: error.message})
   }
 
 })
