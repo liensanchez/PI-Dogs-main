@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from './SearchBar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../img/logo.png'
 
@@ -50,13 +50,20 @@ const Button = styled.button`
 
 
 function Nav() {
+
+  const navigate = useNavigate()
+
+  const home = async () => {
+        
+    navigate('/home')
+  }
+
+
   return (
     <NavContainer>
       <NavBar>
         <LogoContainer>
-          <Link to='/home'>
-            <Logo src={logo} alt="" />
-          </Link>
+          <Logo src={logo} alt="" onClick={home}/>
         </LogoContainer>
         <SearchContainer>
           <SearchBar/>
