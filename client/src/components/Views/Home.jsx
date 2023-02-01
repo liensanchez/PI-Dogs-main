@@ -1,8 +1,8 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import Cards from './Cards'
-import Pagination from './Pagination'
-import Filters from './Filters'
+import Cards from '../Cards'
+import Pagination from '../Pagination'
+import Filters from '../Filters'
 import styled from 'styled-components'
 
 const DivContainer = styled.div`

@@ -1,8 +1,7 @@
 import React from 'react'
-import ImgError from '../img/404.png'
+/* import ImgError from '.../img/404.png' */
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
 
 
 const DivContainer = styled.div`
@@ -51,7 +50,7 @@ function Error({props}) {
       <DivInfo>
         <h2>Error: </h2>
         <h3>{props && props.length ? props : errorRuta}</h3>
-        <Img src={ImgError} alt="" />
+{/*         <Img src={ImgError} alt="" /> */}
         <Link to='/home'>
           <Button>Home</Button>
         </Link>

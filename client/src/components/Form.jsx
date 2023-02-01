@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+import { useDispatch} from 'react-redux';
+import {allDogs} from '../redux/action/action'
 
 
 const DivContainer = styled.div`
@@ -64,6 +66,8 @@ const ErrorText = styled.p`
 
 
 function Form() {
+
+  const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
@@ -153,7 +157,9 @@ function Form() {
 
   const submit = (e) => {
     e.preventDefault()
-    if((!error.name) || (!error.temperament)){
+    if((!breed.name)){
+      alert('the breed needs a name')
+    }else if((!error.name) || (!error.temperament)){
       axios({
         method: "post",
         url: "http://localhost:3003/dogs",
@@ -165,13 +171,11 @@ function Form() {
           temperament: breed.temperament
         }
       })
-      navigate('/home', { replace: true })
-    }else if(error.name){
-      alert('the breed needs a name')
+      dispatch(allDogs())
+      navigate('/home') 
     }else if(error.name){
       alert('the breed needs a name') 
     }
-
   }
 
 
