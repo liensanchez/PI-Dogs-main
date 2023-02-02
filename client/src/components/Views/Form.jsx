@@ -4,7 +4,7 @@ import { useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { useDispatch} from 'react-redux';
-import {allDogs} from '../redux/action/action'
+import {allDogs} from '../../redux/action/action'
 
 
 const DivContainer = styled.div`

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './Views/Card';
+import Card from './Card';
 import styled from 'styled-components'
 
 

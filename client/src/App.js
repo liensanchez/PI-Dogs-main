@@ -8,7 +8,7 @@ import Error from './components/Views/Error';
 import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
 import { allDogs, copyOfDogs } from './redux/action/action';
-import Form from './components/Form';
+import Form from './components/Views/Form';
 import Detail from './components/Views/Detail';
 
 
