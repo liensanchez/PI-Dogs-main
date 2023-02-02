@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-/* import logo from '...../img/logo.png' */
+import logo from '../../img/logo.png'
 
 
 const DivContainer = styled.div`
@@ -53,19 +53,19 @@ function Index() {
   return (
     <DivContainer>
       <DivInter>
-{/*         <Image src={logo} alt="" /> */}
+        <Image src={logo} alt="" />
         <h1>The Dog Api!</h1>
         <Link to='/home'>
           <Button>Start!</Button>
         </Link>
         <h3>By Lien Sanchez</h3>
         <ButtonContainer>
-{/*           <Link to={pathname: "https://github.com/liensanchez" } target="_blank" > */}
-            <Button> Github</Button>
-{/*           </Link> */}
-{/*           <Link to={{ pathname: "https://www.linkedin.com/in/liensanchez/" }} target="_blank"> */}
-            <Button>LinkedIn</Button>
-{/*           </Link> */}
+            <a href="https://github.com/liensanchez" target="blank">
+              <Button> Github</Button>
+            </a>
+            <a href="https://www.linkedin.com/in/liensanchez/" target="blank">
+              <Button>LinkedIn</Button>
+            </a>
         </ButtonContainer>
         <p>2023 FullStack Soy Henry</p>
       </DivInter>

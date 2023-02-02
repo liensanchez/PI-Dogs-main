@@ -10,7 +10,7 @@ const getAllTemperaments = async () => {
 
   temperamentFromApi.forEach((comportamiento) => {
 
-    if ( comportamiento != undefined && comportamiento.length > 0) {
+    if ( comportamiento != undefined && comportamiento.length > 0) { 'te1, te2, te3'
 
       let arrTemp = comportamiento.split(', ')
 

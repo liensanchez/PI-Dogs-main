@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
 import { allDogs, copyOfDogs } from './redux/action/action';
 import Form from './components/Form';
-import DetailCard from './components/Views/DetailCard';
+import Detail from './components/Views/Detail';
 
 
 
@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Index/>}/>
         <Route path='/home' element={<Home />}/>
-        <Route path='/dogs/:id' element={<DetailCard/>}/>
+        <Route path='/dogs/:id' element={<Detail/>}/>
         <Route path='/dogs' element={<SearchResults/>}/>
         <Route path='/dogs/createdog' element={<Form/>}/>
         <Route path='/*' element={<Error to="/error" replace/>}/>

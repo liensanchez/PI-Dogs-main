@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
-import DetailCard from './Views/DetailCard';
+import DetailCard from '../DetailCard';
 
 
 
@@ -43,7 +43,6 @@ function Detail() {
   return (
     <DivContainer>
       {showDog}
-{/*       <DetailCard showDog={showDog}></DetailCard> */}
     </DivContainer>
   )
 }
