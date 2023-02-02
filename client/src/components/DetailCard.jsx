@@ -68,7 +68,6 @@ function DetailCard(showDog) {
 
   const dog = showDog
 
-  console.log(dog)
 
   return (
     <>
