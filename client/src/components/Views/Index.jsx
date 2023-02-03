@@ -13,6 +13,7 @@ const DivContainer = styled.div`
 
 const DivInter = styled.div`
   background-color:#8D7070;
+  color: #ede1e1;
   border-radius:10px;
   display: flex;
   flex-direction: column;

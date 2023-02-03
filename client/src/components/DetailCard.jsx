@@ -6,20 +6,21 @@ import { Link } from 'react-router-dom'
 
 const DivInter = styled.div`
   background-color:#8D7070;
+  color: #ede1e1;
   border-radius:10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 6px 6px 18px;
+  box-shadow:#000000 6px 6px 18px ;
 `;
 
 const Image = styled.img`
   width: 250px;
   height: 250px;
   border-radius:10px;
-  box-shadow: 2px 2px 8px;
+  box-shadow:#000000  2px 2px 8px;
 `;
 
 const DataContainer = styled.div`
@@ -67,8 +68,6 @@ const Button = styled.button`
 function DetailCard(showDog) {
 
   const dog = showDog
-
-  console.log(showDog)
 
   return (
     <>
