@@ -2,11 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Cards from '../Cards'
 import Pagination from '../Pagination'
 import styled from 'styled-components'
 import Error from './Error'
+import { changePage } from '../../redux/action/action'
 
 
 const DivContainer = styled.div`
@@ -18,7 +19,9 @@ const DivContainer = styled.div`
 
 function SearchResults() {
 
-  const currentPage = useSelector(state => state.currentPage)
+  const dispatch = useDispatch()
+
+  let currentPage = useSelector(state => state.currentPage)
 
   const [dogs, setDogs] = useState([])
 
@@ -34,6 +37,8 @@ function SearchResults() {
       setDogs(dogsResponse.data)
     }    
     getData()
+
+    dispatch(changePage(currentPage = 1))
   }, [search])
 
   let errorSearch = 'No dog found'
