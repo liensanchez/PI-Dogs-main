@@ -10,7 +10,9 @@ import {useEffect} from 'react'
 import { allDogs, copyOfDogs } from './redux/action/action';
 import Form from './components/Views/Form';
 import Detail from './components/Views/Detail';
+import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:3003/'
 
 
 

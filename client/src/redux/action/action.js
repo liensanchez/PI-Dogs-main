@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const ALLDOGS = 'ALLDOGS'
 export const CHANGE_PAGE = 'CHANGE_PAGE'
 export const ORDERDOGSALPHABETICAL = 'ORDERDOGSALPHABETICAL'
@@ -21,9 +23,7 @@ export const changePage = (page) => {
 
 export const allDogs = () => async (dispatch) => {
 
-  const dogsResponse = await fetch('http://localhost:3003/dogs')
-
-  const dogsInfo = await dogsResponse.json()
+  const { data: dogsInfo } = await axios.get('/dogs');
 
   dispatch({
 

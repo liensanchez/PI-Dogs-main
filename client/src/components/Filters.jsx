@@ -60,7 +60,7 @@ function Filters() {
 
     async function getData() {
 
-      const tempsResponse = await axios.get('http://localhost:3003/temperaments')
+      const tempsResponse = await axios.get('/temperaments')
 
       setTemperament(tempsResponse.data)
     }    

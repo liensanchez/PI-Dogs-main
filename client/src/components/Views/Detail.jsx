@@ -24,7 +24,7 @@ function Detail() {
 
     async function getData() {
       
-      const dogsResponse = await axios.get(`http://localhost:3003/dogs/${id}`)
+      const dogsResponse = await axios.get(`/dogs/${id}`)
 
       setDog(dogsResponse.data)
     }    

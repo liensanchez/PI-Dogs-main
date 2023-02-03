@@ -162,7 +162,7 @@ function Form() {
     }else if((!error.name) || (!error.temperament)){
       axios({
         method: "post",
-        url: "http://localhost:3003/dogs",
+        url: "/dogs",
         data:{
           name: breed.name,
           height: breed.height,

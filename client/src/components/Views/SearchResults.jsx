@@ -33,7 +33,7 @@ function SearchResults() {
 
   useEffect(() => {
     async function getData() {
-      const dogsResponse = await axios.get(`http://localhost:3003/dogs?name=${search}`)  
+      const dogsResponse = await axios.get(`/dogs?name=${search}`)  
       setDogs(dogsResponse.data)
     }    
     getData()
