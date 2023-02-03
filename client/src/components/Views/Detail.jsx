@@ -38,6 +38,8 @@ function Detail() {
       img={dog.image}  
       temperament={dog.temperament}
       weight={dog.weight}
+      height={dog.height}
+      lifeSpan={dog.lifeSpan}
   />
 )
   return (

@@ -92,6 +92,8 @@ const searchID = async (dogId) => {
   const allDogs = await allDogsInfo()
 
   const dog = allDogs.filter((dog) => dog.id == dogId)
+
+  console.log(dog)
   
   return dog
 }
