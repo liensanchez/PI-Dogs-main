@@ -69,6 +69,7 @@ function Filters() {
   }, [])
 
   const temperamentOrder = (temperament) => {
+    console.log('anda')
 
       dispatch(copyOfDogs(allTheDogs))
 
@@ -83,6 +84,8 @@ function Filters() {
   const [recharge, setRecharge] = useState(false)
 
   const originOrderDB = (dogs) => {
+
+    console.log('esto anda')
 
     if (recharge === false) {
 
@@ -127,6 +130,7 @@ function Filters() {
 
 
   const alphabeticalOrder = () => {
+    console.log('hola funciona')
 
     dispatch(orderDogsAlphabetical())
   }
@@ -164,13 +168,16 @@ function Filters() {
     orderRef.current.value = 'defaultOrder'
   }
 
+  const hello = () => {
+    console.log('bay')
+  }
 
   return (
     <DivContainer>
       <FilterDiv>
         <h2>Filters:</h2>
 
-        <div>
+{/*         <div>
         <label>Temperaments</label>
         <Select name="temperament" ref={temperamentRef}>
           <option value='defaultTemperaments' onClick={filterReset}>All Temperaments</option>
@@ -178,27 +185,29 @@ function Filters() {
                                   <option value={temperament.id} key={temperament.id} onClick={() => temperamentOrder(temperament.name)} >{temperament.name}</option>
                               ))} 
         </Select>          
-        </div>
+        </div> */}
 
         <div>
         <label>Origin</label> <br></br>
         <Select name="originGroup" id="" ref={originRef}>
-          <option value='defaultOrigin' onClick={filterReset}>All origins</option>
-          <option value="Database" onClick={originOrderDB}>Database</option>
-          <option value="Api" onClick={originOrderAPI}>API</option>
+          <option value="h">hola</option>
+          <option value="h" onClick={hello}>chau</option>
+{/*           <option value='defaultOrigin' onChange={filterReset}>All origins</option>
+          <option value="Database" onChange={originOrderDB}>Database</option>
+          <option value="Api" onChange={originOrderAPI}>API</option> */}
         </Select>          
         </div>
 
-        <div>
+{/*         <div>
         <label>Orders</label>
         <Select name="alphabeticGroup" id="" ref={orderRef}>
-          <option value='defaultOrder' onClick={filterReset}>Any Order</option>
-          <option value="alphabeticalOrder" onClick={alphabeticalOrder}>Alphabetical Ascending</option>
-          <option value="reversedAlphabeticalOrder" onClick={reversedAlphabeticalOrder}>Alphabetical Descending</option>
-          <option value="weightAscOrder" onClick={weightAscOrder}>Weight Ascending</option>
-          <option value="weightDscOrder" onClick={weightDscOrder}>Weight Descending</option>
+          <option value='defaultOrder' onChange={filterReset}>Any Order</option>
+          <option value="alphabeticalOrder" onChange={alphabeticalOrder}>Alphabetical Ascending</option>
+          <option value="reversedAlphabeticalOrder" onChange={reversedAlphabeticalOrder}>Alphabetical Descending</option>
+          <option value="weightAscOrder" onChange={weightAscOrder}>Weight Ascending</option>
+          <option value="weightDscOrder" onChange={weightDscOrder}>Weight Descending</option>
         </Select>          
-        </div>
+        </div> */}
 
         <Button onClick={resetFilters}>Reset Filters</Button>
 

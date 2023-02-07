@@ -41,7 +41,9 @@ function Detail() {
       height={dog.height}
       lifeSpan={dog.lifeSpan}
   />
+
 )
+console.log(showDog)
   return (
     <DivContainer>
       {showDog}
