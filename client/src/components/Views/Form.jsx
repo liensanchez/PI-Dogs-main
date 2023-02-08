@@ -80,7 +80,7 @@ function Form() {
     maxWeight: '',
     weight: '',
     minLifeSpan: '',
-    maxLifeSpan: '',
+    mxLifeSpan: '',
     lifeSpan: '',
     image: '',
     temperament: ''
@@ -95,7 +95,7 @@ function Form() {
     maxWeight: '',
     weight: '',
     minLifeSpan: '',
-    maxLifeSpan: '',
+    mxLifeSpan: '',
     lifeSpan: '',
     image: '',
     temperament: ''
@@ -118,8 +118,8 @@ function Form() {
     if (breed.maxWeight < 0) error.maxWeight = 'Only positive numbers'
     if (breed.maxWeight < breed.minWeight) error.maxWeight= 'The maximum weight must be greater than the minimum'
     if (breed.minLifeSpan < 0) error.minLifeSpan = 'Only positive numbers'
-    if (breed.maxLifeSpan < 0) error.maxLifeSpan = 'Only positive numbers'
-    if (breed.maxLifeSpan < breed.minLifeSpan) error.maxLifeSpan= 'The maximum life span must be greater than the minimum'
+    if (breed.mxLifeSpan < 0) error.mxLifeSpan = 'Only positive numbers'
+    if (breed.mxLifeSpan < breed.minLifeSpan) error.mxLifeSpan= 'The maximum life span must be greater than the minimum' 
     if (!breed.temperament) error.temperament = 'This field is required';
 
 
@@ -129,13 +129,13 @@ function Form() {
 
   const handleChange = ((e) => {
 
-    if (e.target.name === "minHeight" || e.target.name === "maxHeight" || e.target.name === "minWeight" || e.target.name === "maxWeight" || e.target.name === "minLifeSpan" || e.target.name === "maxLifeSpan" || e.target.name === "maxLifeSpan") {
+    if (e.target.name === "minHeight" || e.target.name === "maxHeight" || e.target.name === "minWeight" || e.target.name === "maxWeight" || e.target.name === "minLifeSpan" || e.target.name === "mxLifeSpan" ) {
       setBreed({
           ...breed,
           [e.target.name]: e.target.value,
           height: `${breed.minHeight}-${breed.maxHeight}`,
           weight: `${breed.minWeight}-${breed.maxWeight}`,
-          lifeSpan: `${breed.minLifeSpan}-${breed.maxLifeSpan}`,
+          lifeSpan: `${breed.minLifeSpan} -${breed.mxLifeSpan} `
       });
     } else {
       setBreed({
@@ -216,8 +216,8 @@ function Form() {
       <ErrorText >{error.minLifeSpan && error.minLifeSpan} </ErrorText>
 
       <label htmlFor="">Maximum Life Span</label>
-      <InputForm type="number" name="maxLifeSpan" id="" value={breed.maxLifeSpan} onChange={handleChange}/>
-      <ErrorText >{error.maxLifeSpan && error.maxLifeSpan} </ErrorText>
+      <InputForm type="number" name="mxLifeSpan" id="" value={breed.mxLifeSpan} onChange={handleChange}/>
+      <ErrorText >{error.mxLifeSpan && error.mxLifeSpan} </ErrorText>
 
       <label htmlFor="">Image URL</label>
       <InputForm type="text" name="image" id="" value={breed.image} onChange={handleChange}/>
