@@ -82,7 +82,7 @@ function Form() {
     minLifeSpan: '',
     maxLifeSpan: '',
     lifeSpan: '',
-    img: '',
+    image: '',
     temperament: ''
   });
 
@@ -97,7 +97,7 @@ function Form() {
     minLifeSpan: '',
     maxLifeSpan: '',
     lifeSpan: '',
-    img: '',
+    image: '',
     temperament: ''
   });
 
@@ -168,6 +168,7 @@ function Form() {
           height: breed.height,
           weight: breed.weight,
           lifeSpan: breed.lifeSpan,
+          image: breed.image,
           temperament: breed.temperament
         }
       })
@@ -219,7 +220,7 @@ function Form() {
       <ErrorText >{error.maxLifeSpan && error.maxLifeSpan} </ErrorText>
 
       <label htmlFor="">Image URL</label>
-      <InputForm type="text" name="img" id="" value={breed.img} onChange={handleChange}/>
+      <InputForm type="text" name="image" id="" value={breed.image} onChange={handleChange}/>
 
       <label htmlFor="">Temperaments</label>
       <InputForm type="text" name="temperament" id="" value={breed.temperament} onChange={handleChange} />
