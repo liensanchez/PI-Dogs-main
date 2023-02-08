@@ -111,7 +111,7 @@ function Filters() {
       }
 
       originOrderDB ()
-    }else {
+    }else if(origin === 'Api'){
 
       const originOrderAPI = (dogs) => {
     
@@ -133,6 +133,9 @@ function Filters() {
       } 
 
       originOrderAPI()
+    }else if (origin === 'defaultOrigin'){
+
+      dispatch(copyOfDogs(allTheDogs))
     }
   }
 
@@ -163,7 +166,7 @@ function Filters() {
       }
 
       weightAscOrder()
-    } else if (order === "weightDscOrder") {
+    }else if (order === "weightDscOrder") {
 
       const weightDscOrder = () => {
 
@@ -171,13 +174,10 @@ function Filters() {
       }
 
       weightDscOrder()
+    }else if (order === 'defaultOrder'){
+      
+      dispatch(copyOfDogs(allTheDogs))
     }
-  }
-
-
-  const filterReset = () => {
-
-    dispatch(copyOfDogs(allTheDogs))
   }
 
   const temperamentRef = useRef(null);
@@ -206,7 +206,7 @@ function Filters() {
         <div>
         <label>Temperaments</label>
         <Select name="temperament" ref={temperamentRef} onChange={handleTemperament}>
-          <option value='defaultTemperaments' onClick={filterReset}>All Temperaments</option>
+          <option value='defaultTemperaments'>All Temperaments</option>
           {temperament.map((temperament) => (
                                   <option value={temperament.name} key={temperament.id}>{temperament.name}</option>
                               ))} 
@@ -216,7 +216,7 @@ function Filters() {
          <div>
         <label>Origin</label> <br></br>
         <Select name="originGroup" id="" ref={originRef} onChange={handleOrigin}>
-          <option value='defaultOrigin' onClick={filterReset}>All origins</option>
+          <option value='defaultOrigin'>All origins</option>
           <option value="Database">Database</option>
           <option value="Api">API</option>
         </Select>          
@@ -225,7 +225,7 @@ function Filters() {
         <div>
         <label>Orders</label>
         <Select name="alphabeticGroup" id="" ref={orderRef} onChange={handleOrder}>
-          <option value='defaultOrder' onClick={filterReset}>Any Order</option>
+          <option value='defaultOrder'>Any Order</option>
           <option value="alphabeticalOrder">Alphabetical Ascending</option>
           <option value="reversedAlphabeticalOrder">Alphabetical Descending</option>
           <option value="weightAscOrder">Weight Ascending</option>
