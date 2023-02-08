@@ -68,88 +68,117 @@ function Filters() {
     getData()
   }, [])
 
-  const temperamentOrder = (temperament) => {
-    console.log('anda')
+  const handleTemperament = (event) => {
+    
+    let temp = event.target.value
+
+    if (temp === 'defaultTemperaments'){
+
+      dispatch(copyOfDogs(allTheDogs))
+    }else {
 
       dispatch(copyOfDogs(allTheDogs))
 
-      dispatch(orderByTemperament(temperament))
-
-      originRef.current.value = 'defaultOrigin'
-    
-      orderRef.current.value = 'defaultOrder'
+      dispatch(orderByTemperament(temp))
+    }
   }
 
   
   const [recharge, setRecharge] = useState(false)
 
-  const originOrderDB = (dogs) => {
+  const handleOrigin = (event) => {
+    let origin = event.target.value
 
-    console.log('esto anda')
+    if (origin === 'Database'){
+      
+      const originOrderDB = (dogs) => {
 
-    if (recharge === false) {
+        if (recharge === false) {
+    
+          dispatch(copyOfDogs(allTheDogs))
+    
+          dispatch(orderDogsByOriginDB(dogs)) 
+    
+          setRecharge(true)
+        } else{
+    
+          dispatch(copyOfDogs(allTheDogs))
+    
+          dispatch(orderDogsByOriginDB(dogs)) 
+    
+          setRecharge(false)
+        }
+      }
 
-      dispatch(copyOfDogs(allTheDogs))
+      originOrderDB ()
+    }else {
 
-      dispatch(orderDogsByOriginDB(dogs)) 
+      const originOrderAPI = (dogs) => {
+    
+        if (recharge === false) {
+          
+          dispatch(copyOfDogs(allTheDogs))
+    
+          dispatch(orderDogsByOriginAPI(dogs))
+    
+          setRecharge(true)
+        } else{ 
+    
+          dispatch(copyOfDogs(allTheDogs))
+    
+          dispatch(orderDogsByOriginAPI())
+    
+          setRecharge(false)
+        }    
+      } 
 
-      setRecharge(true)
-    } else{
-
-      dispatch(copyOfDogs(allTheDogs))
-
-      dispatch(orderDogsByOriginDB(dogs)) 
-
-      setRecharge(false)
+      originOrderAPI()
     }
   }
 
-  const originOrderAPI = (dogs) => {
+  const handleOrder = (event) => {
+    let order = event.target.value
 
-     if (recharge === false) {
-      
-      dispatch(copyOfDogs(allTheDogs))
+    if(order === "alphabeticalOrder"){
 
-      dispatch(orderDogsByOriginAPI(dogs))
+      const alphabeticalOrder = () => {
 
-      setRecharge(true)
-    } else{ 
+        dispatch(orderDogsAlphabetical())
+      }
 
-      dispatch(copyOfDogs(allTheDogs))
+      alphabeticalOrder()
+    }else if (order === "reversedAlphabeticalOrder") {
 
-      dispatch(orderDogsByOriginAPI())
+      const reversedAlphabeticalOrder = () => {
 
-      setRecharge(false)
-     }    
-  } 
+        dispatch(orderDogsReversed())
+      }
+
+      reversedAlphabeticalOrder()
+    }else if (order === "weightAscOrder") {
+
+      const weightAscOrder = () => {
+
+        dispatch(orderDogsWeightAsc())
+      }
+
+      weightAscOrder()
+    } else if (order === "weightDscOrder") {
+
+      const weightDscOrder = () => {
+
+        dispatch(orderDogsWeightDsc())
+      }
+
+      weightDscOrder()
+    }
+  }
+
 
   const filterReset = () => {
 
     dispatch(copyOfDogs(allTheDogs))
   }
-
-
-  const alphabeticalOrder = () => {
-    console.log('hola funciona')
-
-    dispatch(orderDogsAlphabetical())
-  }
-
-  const reversedAlphabeticalOrder = () => {
-
-    dispatch(orderDogsReversed())
-  }
-
-  const weightAscOrder = () => {
-
-    dispatch(orderDogsWeightAsc())
-  }
-
-  const weightDscOrder = () => {
-
-    dispatch(orderDogsWeightDsc())
-  }
-
 
   const temperamentRef = useRef(null);
 
@@ -168,48 +197,43 @@ function Filters() {
     orderRef.current.value = 'defaultOrder'
   }
 
-  const hello = () => {
-    console.log('bay')
-  }
 
   return (
     <DivContainer>
       <FilterDiv>
         <h2>Filters:</h2>
 
-{/*         <div>
+        <div>
         <label>Temperaments</label>
-        <Select name="temperament" ref={temperamentRef}>
+        <Select name="temperament" ref={temperamentRef} onChange={handleTemperament}>
           <option value='defaultTemperaments' onClick={filterReset}>All Temperaments</option>
           {temperament.map((temperament) => (
-                                  <option value={temperament.id} key={temperament.id} onClick={() => temperamentOrder(temperament.name)} >{temperament.name}</option>
+                                  <option value={temperament.name} key={temperament.id}>{temperament.name}</option>
                               ))} 
-        </Select>          
-        </div> */}
-
-        <div>
-        <label>Origin</label> <br></br>
-        <Select name="originGroup" id="" ref={originRef}>
-          <option value="h">hola</option>
-          <option value="h" onClick={hello}>chau</option>
-{/*           <option value='defaultOrigin' onChange={filterReset}>All origins</option>
-          <option value="Database" onChange={originOrderDB}>Database</option>
-          <option value="Api" onChange={originOrderAPI}>API</option> */}
         </Select>          
         </div>
 
-{/*         <div>
-        <label>Orders</label>
-        <Select name="alphabeticGroup" id="" ref={orderRef}>
-          <option value='defaultOrder' onChange={filterReset}>Any Order</option>
-          <option value="alphabeticalOrder" onChange={alphabeticalOrder}>Alphabetical Ascending</option>
-          <option value="reversedAlphabeticalOrder" onChange={reversedAlphabeticalOrder}>Alphabetical Descending</option>
-          <option value="weightAscOrder" onChange={weightAscOrder}>Weight Ascending</option>
-          <option value="weightDscOrder" onChange={weightDscOrder}>Weight Descending</option>
+         <div>
+        <label>Origin</label> <br></br>
+        <Select name="originGroup" id="" ref={originRef} onChange={handleOrigin}>
+          <option value='defaultOrigin' onClick={filterReset}>All origins</option>
+          <option value="Database">Database</option>
+          <option value="Api">API</option>
         </Select>          
-        </div> */}
+        </div>
 
-        <Button onClick={resetFilters}>Reset Filters</Button>
+        <div>
+        <label>Orders</label>
+        <Select name="alphabeticGroup" id="" ref={orderRef} onChange={handleOrder}>
+          <option value='defaultOrder' onClick={filterReset}>Any Order</option>
+          <option value="alphabeticalOrder">Alphabetical Ascending</option>
+          <option value="reversedAlphabeticalOrder">Alphabetical Descending</option>
+          <option value="weightAscOrder">Weight Ascending</option>
+          <option value="weightDscOrder">Weight Descending</option>
+        </Select>          
+        </div>
+
+        <Button onClick={resetFilters}>Reset Filters</Button> 
 
       </FilterDiv>
     </DivContainer>
